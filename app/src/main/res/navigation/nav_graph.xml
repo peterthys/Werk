@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
 
+    <fragment
+        android:id="@+id/overzichtFragment"
+        android:name="com.example.werk.OverzichtFragment"
+        android:label="fragment_overzicht"
+        tools:layout="@layout/fragment_overzicht" />
+    <fragment
+        android:id="@+id/klantFragment"
+        android:name="com.example.werk.KlantFragment"
+        android:label="fragment_klant"
+        tools:layout="@layout/fragment_klant" />
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.werk.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_overzichtFragment"
+            app:destination="@id/overzichtFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_klantFragment"
+            app:destination="@id/klantFragment" />
+    </fragment>
 </navigation>
