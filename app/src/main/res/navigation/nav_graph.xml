@@ -12,10 +12,10 @@
         android:label="fragment_main"
         tools:layout="@layout/fragment_main">
         <action
-            android:id="@+id/action_mainFragment_to_overzichtFragment"
+            android:id="@+id/action_mainFragment_to_overviewFragment"
             app:destination="@id/overviewFragment" />
         <action
-            android:id="@+id/action_mainFragment_to_klantFragment"
+            android:id="@+id/action_mainFragment_to_newCustomerFragment"
             app:destination="@id/newCustomerFragment" />
         <action
             android:id="@+id/action_mainFragment_to_customerOverviewFragment"

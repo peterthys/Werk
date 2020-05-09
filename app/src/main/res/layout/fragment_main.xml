@@ -17,7 +17,7 @@
         app:navGraph="@navigation/nav_graph" />
 
     <Button
-        android:id="@+id/bt-customer"
+        android:id="@+id/bt_customer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="88dp"
@@ -28,52 +28,52 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/bt_beginTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
         android:layout_marginTop="44dp"
-        android:text="StartTijd : "
+        android:text="BeginTime : "
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt-customer" />
+        app:layout_constraintTop_toBottomOf="@+id/bt_customer" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/bt_endTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
         android:layout_marginTop="68dp"
-        android:text="EindTijd : "
+        android:text="EndTime : "
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/bt_beginTime" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_pause"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
         android:layout_marginTop="68dp"
-        android:text="   Pauze   "
+        android:text="   Pause   "
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/bt_endTime" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/bt_overview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
         android:layout_marginBottom="60dp"
-        android:text="naar overzicht"
+        android:text="to overview"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/bt_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="52dp"
         android:layout_marginBottom="216dp"
-        android:text="voeg toe"
+        android:text="Add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
