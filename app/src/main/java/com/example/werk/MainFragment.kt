@@ -23,7 +23,7 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //TODO : als customer popupmenu geworden is moet hier "nieuwe klant"uit dat menu komen
+
         bt_customer.setOnClickListener {
             view.findNavController().navigate(R.id.action_mainFragment_to_newCustomerFragment)
         }
