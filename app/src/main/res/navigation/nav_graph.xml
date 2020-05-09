@@ -26,7 +26,11 @@
         android:id="@+id/overviewFragment"
         android:name="com.example.werk.OverviewFragment"
         android:label="fragment_overview"
-        tools:layout="@layout/fragment_overview" />
+        tools:layout="@layout/fragment_overview" >
+        <action
+            android:id="@+id/action_overviewFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
     <fragment
         android:id="@+id/newCustomerFragment"
         android:name="com.example.werk.NewCustomerFragment"

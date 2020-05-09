@@ -26,12 +26,12 @@ class MainFragment : Fragment() {
         //TODO : als customer popupmenu geworden is moet hier "nieuwe klant"uit dat menu komen
         bt_customer.setOnClickListener {
             view.findNavController().navigate(R.id.action_mainFragment_to_newCustomerFragment)
-
         }
+
         bt_overview.setOnClickListener {
             view.findNavController().navigate(R.id.action_mainFragment_to_overviewFragment)
-
         }
+
         bt_add.setOnClickListener {
             view.findNavController().navigate(R.id.action_mainFragment_to_overviewFragment)
         }
