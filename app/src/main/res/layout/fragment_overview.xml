@@ -6,6 +6,7 @@
     tools:context=".OverviewFragment">
 
     <!-- TODO: Update blank fragment layout -->
+    <!-- TODO: RecyclerView -->
     <ListView
         android:id="@+id/lvOverview"
         android:layout_width="match_parent"
