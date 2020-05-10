@@ -1,5 +1,6 @@
 package com.example.werk.klassen
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
@@ -7,7 +8,7 @@ import androidx.room.*
 interface JobPerformanceDao {
 
     @Query("SELECT * FROM jobPerformance_table")
-    fun getAll(): List<JobPerformance>
+    fun getAll(): LiveData<List<JobPerformance>>
 
     @Query("SELECT * FROM jobPerformance_table WHERE tableCustomer LIKE :title")
     fun findByTitle(title: String): JobPerformance
@@ -17,8 +18,8 @@ interface JobPerformanceDao {
 
 
     @Delete
-    fun delete(jobPerformance: JobPerformance)
+    fun deleteJobPerformance(vararg jobPerformance: JobPerformance)
 
     @Update
-    suspend fun updateJobPerformance(jobPerformance: JobPerformance)
+     fun updateJobPerformance(vararg jobPerformance: JobPerformance)
 }
