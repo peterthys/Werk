@@ -8,7 +8,7 @@ class JobPerformanceRepository(private val jobPerformanceDao:JobPerformanceDao) 
 
     // Room executes all queries on a separate thread.
     // Observed LiveData will notify the observer when the data has changed.
-    val allJobPerformanceDao: LiveData<List<JobPerformance>> = jobPerformanceDao.getAll()
+    val allJobPerformances: LiveData<List<JobPerformance>> = jobPerformanceDao.getAll()
 
     suspend fun insert(jobPerformance: JobPerformance) {
         jobPerformanceDao.insert(jobPerformance)
