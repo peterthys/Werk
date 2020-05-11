@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase
 @Database(entities = arrayOf(JobPerformance::class), version = 1, exportSchema = false)
 public abstract class JobPerformanceDatabase : RoomDatabase() {
 
-    abstract fun wordDao(): JobPerformanceDao
+    abstract fun jobPerformanceDao(): JobPerformanceDao
 
     companion object {
         // Singleton prevents multiple instances of database opening at the
