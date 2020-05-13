@@ -31,6 +31,17 @@ class MainActivity : AppCompatActivity() {
             )
 
         )
+        var begintijd = LocalDateTime.now()
+        var eindtijd =begintijd
+
+        listJobPerformances.add(JobPerformance(0,0,begintijd,eindtijd,30))
+        listJobPerformances.add((JobPerformance(1,1,begintijd,eindtijd,60)))
+
+        recycler_view.adapter = JobPerformanceListAdapter(listJobPerformances)
+        recycler_view.LayoutManager  = LinearLayoutManager(this)
+        recycler_view.setHasFixedSize(true)
+
+
 
     }
 }
