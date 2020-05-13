@@ -9,14 +9,14 @@ import java.time.LocalDateTime
 data class JobPerformance (
     @PrimaryKey (autoGenerate = true)
     var id : Int,
-    @ColumnInfo (name = "tableCustomer")
-    var tableCustomer : String,
-    @ColumnInfo (name = "tableBeginTime")
-    val tableBeginTime: LocalDateTime,
-    @ColumnInfo (name = "tableEndTime")
-    val tableEndTime: LocalDateTime,
-    @ColumnInfo (name = "tablePause")
-    val tablePause: LocalDateTime
+    @ColumnInfo (name = "customerId")
+    var customerId : Int,
+    @ColumnInfo (name = "beginTime")
+    val beginTime: LocalDateTime,
+    @ColumnInfo (name = "endTime")
+    val endTime: LocalDateTime,
+    @ColumnInfo (name = "pause")
+    val pause: Int
 ){
 
 }

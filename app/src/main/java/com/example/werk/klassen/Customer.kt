@@ -1,6 +1,11 @@
 package com.example.werk.klassen
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "customer_table")
 class Customer {
+    @PrimaryKey(autoGenerate = true)
     var customerID : Int ? = null
     var customerName : String ? = null
     var customerDesecription : String ?= null
