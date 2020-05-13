@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 // Annotates class to be a Room Database with a table (entity) of the Word class
-@Database(entities = arrayOf(JobPerformance::class, Customer::class), version = 2, exportSchema = false)
+@Database(entities = arrayOf(JobPerformance::class, Customer::class), version = 3, exportSchema = false)
 public abstract class JobPerformanceDatabase : RoomDatabase() {
 
     abstract fun jobPerformanceDao(): JobPerformanceDao

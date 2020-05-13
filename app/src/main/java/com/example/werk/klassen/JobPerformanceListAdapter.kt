@@ -23,7 +23,7 @@ class JobPerformanceListAdapter(private val jobPerformanceList: ArrayList<JobPer
     override fun onBindViewHolder(holder: JobPerformanceViewHolder, position: Int) {
         val currentJP = jobPerformanceList[position]
 
-        holder.textView1.text = currentJP.customer.toString()
+        holder.textView1.text = currentJP.customerId.toString()
         holder.textView2.text = currentJP.beginTime.toString()
         holder.textView3.text = currentJP.endTime.toString()
         holder.textView4.text = currentJP.pause.toString()

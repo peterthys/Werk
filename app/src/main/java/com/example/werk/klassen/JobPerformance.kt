@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.time.LocalDateTime
+import java.sql.*
 
 @Entity(tableName = "jobPerformance_table")
 data class JobPerformance (
@@ -12,9 +13,9 @@ data class JobPerformance (
     @ColumnInfo (name = "customerId")
     var customerId : Int,
     @ColumnInfo (name = "beginTime")
-    val beginTime: LocalDateTime,
+    val beginTime: Long?,
     @ColumnInfo (name = "endTime")
-    val endTime: LocalDateTime,
+    val endTime: Long?,
     @ColumnInfo (name = "pause")
     val pause: Int
 ){

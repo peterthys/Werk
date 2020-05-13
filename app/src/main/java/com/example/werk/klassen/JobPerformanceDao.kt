@@ -14,9 +14,6 @@ interface JobPerformanceDao {
     @Query("SELECT * FROM jobPerformance_table WHERE customerId = :customerId")
     fun findByCustomerId(customerId: Int): JobPerformance
 
-    @Query("SELECT * FROM jobPerformance_table WHERE beginTime = :beginTime")
-    fun findByBeginTime(beginTime: LocalDateTime): JobPerformance
-
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(jobPerformance: JobPerformance)
 
