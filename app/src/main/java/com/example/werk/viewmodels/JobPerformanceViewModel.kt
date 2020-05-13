@@ -1,9 +1,12 @@
-package com.example.werk.klassen
+package com.example.werk.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.example.werk.database.JobPerformanceDatabase
+import com.example.werk.klassen.JobPerformance
+import com.example.werk.klassen.JobPerformanceRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -18,7 +21,8 @@ class JobPerformanceViewModel(application: Application) : AndroidViewModel(appli
 
     init {
         val jobPerformanceDao = JobPerformanceDatabase.getDatabase(application).jobPerformanceDao()
-        repository = JobPerformanceRepository(jobPerformanceDao)
+        repository =
+            JobPerformanceRepository(jobPerformanceDao)
         allJobPerformances = repository.allJobPerformances
     }
 

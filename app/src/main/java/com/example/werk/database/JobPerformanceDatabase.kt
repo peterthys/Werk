@@ -1,12 +1,16 @@
-package com.example.werk.klassen
+package com.example.werk.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.example.werk.klassen.Customer
+import com.example.werk.klassen.JobPerformance
 
 // Annotates class to be a Room Database with a table (entity) of the Word class
-@Database(entities = arrayOf(JobPerformance::class, Customer::class), version = 3, exportSchema = false)
+@Database(entities = arrayOf(JobPerformance::class, Customer::class), version = 4, exportSchema = false)
+@TypeConverters(DatabaseConverters::class)
 public abstract class JobPerformanceDatabase : RoomDatabase() {
 
     abstract fun jobPerformanceDao(): JobPerformanceDao
@@ -18,7 +22,8 @@ public abstract class JobPerformanceDatabase : RoomDatabase() {
         private var INSTANCE: JobPerformanceDatabase? = null
 
         fun getDatabase(context: Context): JobPerformanceDatabase {
-            val tempInstance = INSTANCE
+            val tempInstance =
+                INSTANCE
             if (tempInstance != null) {
                 return tempInstance
             }

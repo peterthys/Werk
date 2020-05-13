@@ -1,12 +1,17 @@
-package com.example.werk.klassen
+package com.example.werk.gui
 
+import android.icu.util.BuddhistCalendar.BE
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.werk.R
+import com.example.werk.klassen.JobPerformance
 import kotlinx.android.synthetic.main.ticket_job_performances_overview.view.*
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class JobPerformanceListAdapter(private val jobPerformanceList: ArrayList<JobPerformance>) :
     RecyclerView.Adapter<JobPerformanceListAdapter.JobPerformanceViewHolder>() {
@@ -15,7 +20,9 @@ class JobPerformanceListAdapter(private val jobPerformanceList: ArrayList<JobPer
             R.layout.ticket_job_performances_overview,
             parent, false
         )
-        return JobPerformanceViewHolder(itemView)
+        return JobPerformanceViewHolder(
+            itemView
+        )
     }
 
     override fun getItemCount(): Int = jobPerformanceList.size
@@ -23,10 +30,22 @@ class JobPerformanceListAdapter(private val jobPerformanceList: ArrayList<JobPer
     override fun onBindViewHolder(holder: JobPerformanceViewHolder, position: Int) {
         val currentJP = jobPerformanceList[position]
 
+        val dateFormat = SimpleDateFormat("HH:mm", Locale.FRANCE)
+
         holder.textView1.text = currentJP.customerId.toString()
-        holder.textView2.text = currentJP.beginTime.toString()
-        holder.textView3.text = currentJP.endTime.toString()
         holder.textView4.text = currentJP.pause.toString()
+
+        if (currentJP.beginTime != null) {
+            holder.textView2.text = dateFormat.format(currentJP.beginTime)
+        } else {
+            holder.textView2.text = ""
+        }
+
+        if (currentJP.endTime != null) {
+            holder.textView3.text = dateFormat.format(currentJP.endTime)
+        } else {
+            holder.textView3.text = ""
+        }
     }
 
     class JobPerformanceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

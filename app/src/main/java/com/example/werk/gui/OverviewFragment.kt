@@ -1,4 +1,4 @@
-package com.example.werk
+package com.example.werk.gui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.werk.R
 import com.example.werk.klassen.Customer
 import com.example.werk.klassen.JobPerformance
-import com.example.werk.klassen.JobPerformanceListAdapter
 import kotlinx.android.synthetic.main.fragment_overview.*
 import java.util.*
 
@@ -44,13 +44,16 @@ class OverviewFragment : Fragment() {
         )
         //var begintijd = LocalDateTime.now()
         //var eindtijd = begintijd
-        var begintijd = Calendar.getInstance().time.time
-        var eindtijd = Calendar.getInstance().time.time
+        var begintijd = Calendar.getInstance().time
+        var eindtijd = Calendar.getInstance().time
 
         listJobPerformances.add(JobPerformance(0, 0, begintijd, eindtijd, 30))
         listJobPerformances.add((JobPerformance(1, 1, begintijd, eindtijd, 60)))
         try {
-            recycler_view.adapter = JobPerformanceListAdapter(listJobPerformances)
+            recycler_view.adapter =
+                JobPerformanceListAdapter(
+                    listJobPerformances
+                )
             recycler_view.layoutManager = LinearLayoutManager(context)
             recycler_view.setHasFixedSize(true)
         } catch (e : Exception) {

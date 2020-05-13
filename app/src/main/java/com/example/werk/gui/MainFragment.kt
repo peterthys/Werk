@@ -1,4 +1,4 @@
-package com.example.werk
+package com.example.werk.gui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import com.example.werk.R
 import kotlinx.android.synthetic.main.fragment_main.*
 
 /**

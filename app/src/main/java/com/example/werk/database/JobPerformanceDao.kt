@@ -1,7 +1,8 @@
-package com.example.werk.klassen
+package com.example.werk.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.example.werk.klassen.JobPerformance
 import java.time.LocalDateTime
 
 @Dao
