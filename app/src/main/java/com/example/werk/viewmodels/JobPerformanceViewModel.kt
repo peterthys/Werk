@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.werk.database.JobPerformanceDatabase
+import com.example.werk.database.WerkDatabase
 import com.example.werk.klassen.JobPerformance
 import com.example.werk.klassen.JobPerformanceRepository
 import kotlinx.coroutines.Dispatchers
@@ -20,7 +20,7 @@ class JobPerformanceViewModel(application: Application) : AndroidViewModel(appli
     val allJobPerformances: LiveData<List<JobPerformance>>
 
     init {
-        val jobPerformanceDao = JobPerformanceDatabase.getDatabase(application).jobPerformanceDao()
+        val jobPerformanceDao = WerkDatabase.getDatabase(application).jobPerformanceDao()
         repository =
             JobPerformanceRepository(jobPerformanceDao)
         allJobPerformances = repository.allJobPerformances
