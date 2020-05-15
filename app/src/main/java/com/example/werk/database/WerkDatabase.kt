@@ -14,6 +14,7 @@ import com.example.werk.klassen.JobPerformance
 public abstract class WerkDatabase : RoomDatabase() {
 
     abstract fun jobPerformanceDao(): JobPerformanceDao
+    abstract  fun customersDao() : CustomersDao
 
     companion object {
         // Singleton prevents multiple instances of database opening at the
@@ -29,7 +30,7 @@ public abstract class WerkDatabase : RoomDatabase() {
             }
             synchronized(this) {
                 val instance = Room.databaseBuilder(context.applicationContext, WerkDatabase::class.java,
-                    "jobPerformance_database").build()
+                    "werk_database").build()
                 INSTANCE = instance
                 return instance
             }

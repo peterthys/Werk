@@ -13,16 +13,20 @@ import kotlinx.coroutines.launch
 class JobPerformanceViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository: JobPerformanceRepository
+
+
     // Using LiveData and caching what getAlphabetizedWords returns has several benefits:
     // - We can put an observer on the data (instead of polling for changes) and only update the
     //   the UI when the data actually changes.
     // - Repository is completely separated from the UI through the ViewModel.
     val allJobPerformances: LiveData<List<JobPerformance>>
 
+
     init {
         val jobPerformanceDao = WerkDatabase.getDatabase(application).jobPerformanceDao()
-        repository =
-            JobPerformanceRepository(jobPerformanceDao)
+        val customersDao = WerkDatabase.getDatabase(application).customersDao()
+        repository=
+            JobPerformanceRepository(jobPerformanceDao,customersDao)
         allJobPerformances = repository.allJobPerformances
     }
 
