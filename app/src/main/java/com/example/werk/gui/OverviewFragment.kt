@@ -50,12 +50,12 @@ class OverviewFragment : Fragment() {
         listJobPerformances.add(JobPerformance(0, 0, begintijd, eindtijd, 30))
         listJobPerformances.add((JobPerformance(1, 1, begintijd, eindtijd, 60)))
         try {
-            recycler_view.adapter =
+            recycler_view_jobPerformance.adapter =
                 JobPerformanceListAdapter(
                     listJobPerformances
                 )
-            recycler_view.layoutManager = LinearLayoutManager(context)
-            recycler_view.setHasFixedSize(true)
+            recycler_view_jobPerformance.layoutManager = LinearLayoutManager(context)
+            recycler_view_jobPerformance.setHasFixedSize(true)
         } catch (e : Exception) {
             e.printStackTrace()
         }
