@@ -19,7 +19,7 @@
             android:id="@+id/recycler_view_customer"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            tools:listitem="@layout/ticket_job_performances_overview"
+            tools:listitem="@layout/ticket_customers_overview"
             android:padding="4dp"
             android:clipToPadding="false"
             app:layout_constraintBottom_toBottomOf="parent"

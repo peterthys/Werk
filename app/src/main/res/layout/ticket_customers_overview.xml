@@ -71,12 +71,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_BTW"
+        android:id="@+id/tv_BTWnr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
         android:layout_marginTop="20dp"
-        android:text="BTW nr"
+        android:text="BTWnr"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_adress1" />
 
@@ -88,6 +88,6 @@
         android:layout_marginTop="20dp"
         android:text="Info"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_BTW" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_BTWnr" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

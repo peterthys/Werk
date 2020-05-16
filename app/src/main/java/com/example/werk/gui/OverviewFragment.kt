@@ -31,14 +31,16 @@ class OverviewFragment : Fragment() {
         listCustomers.add(
             Customer(
                 1,
+                1,
                 "Ceulemans Peter",
-                "Aannemer",
-                " 0476418746 ",
-                "peterceulemans.bvba@skynet.be",
-                "Schriekstraat 140 2223 Schriek ",
+                "Aannemer  ",
+                "0476418746",
+                "peterceulemans.bvba@skynet.be ",
+                "Schriekstraat 140 2223 Schriek",
                 "",
-                "",
-                "BE0860 733 953 "
+
+                "BE0860 733 953 ",
+            "123123123"
             )
 
         )
