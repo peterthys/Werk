@@ -9,7 +9,7 @@
 
 
     <Button
-        android:id="@+id/bt_customer"
+        android:id="@+id/bt_new_customer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="84dp"
@@ -27,7 +27,7 @@
         android:layout_marginTop="44dp"
         android:text="BeginTime : "
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_customer" />
+        app:layout_constraintTop_toBottomOf="@+id/bt_new_customer" />
 
     <Button
         android:id="@+id/bt_endTime"
@@ -75,8 +75,8 @@
         android:layout_height="0dp"
         android:layout_marginStart="52dp"
         android:layout_marginTop="84dp"
-        app:layout_constraintBottom_toBottomOf="@+id/bt_customer"
-        app:layout_constraintEnd_toStartOf="@+id/bt_customer"
+        app:layout_constraintBottom_toBottomOf="@+id/bt_new_customer"
+        app:layout_constraintEnd_toStartOf="@+id/bt_new_customer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
