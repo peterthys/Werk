@@ -8,8 +8,6 @@ import androidx.room.PrimaryKey
 data class Customer(
     @PrimaryKey(autoGenerate = true)
     var id: Int,
-    @ColumnInfo(name = "customerId")
-    var customerID: Int,
     @ColumnInfo(name = "customerName")
     var customerName: String,
     @ColumnInfo(name = "customerDescription")
@@ -26,8 +24,14 @@ data class Customer(
     var customerInfo: String,
     @ColumnInfo(name = "customerBTWnr")
     var customerBTWnr: String
-)
-{}
+) {
+    constructor() : this(0, "", "", "", "", "", "", "", "")
+    constructor(customerName : String, customerPhone : String) : this() {
+        this.customerName = customerName
+        this.customerPhone = customerPhone
+    }
+}
+//{}
 //{
 //    constructor(
 //        customerID: Int,

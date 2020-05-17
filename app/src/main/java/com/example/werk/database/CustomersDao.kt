@@ -12,7 +12,7 @@ interface CustomersDao {
         @Query("SELECT * FROM customer_table")
         fun getAll(): LiveData<List<Customer>>
 
-        @Query("SELECT * FROM customer_table WHERE customerId = :customerId")
+        @Query("SELECT * FROM customer_table WHERE id = :customerId")
         fun findByCustomerId(customerId: Int): Customer
 
         @Insert(onConflict = OnConflictStrategy.IGNORE)
@@ -21,6 +21,8 @@ interface CustomersDao {
         @Insert(onConflict = OnConflictStrategy.REPLACE)
         suspend fun save(customer: Customer)
 
+        @Query("DELETE FROM customer_table")
+        suspend fun deleteAll()
 
         @Delete
         fun deleteJobPerformance(vararg customer: Customer)

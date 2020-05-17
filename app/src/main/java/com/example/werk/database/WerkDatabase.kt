@@ -11,12 +11,11 @@ import com.example.werk.klassen.JobPerformance
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import java.util.*
-import kotlin.reflect.KParameter
 
 //https://codelabs.developers.google.com/codelabs/android-room-with-a-view-kotlin/#11
 @Database(
-    entities = arrayOf(JobPerformance::class, Customer::class),
-    version = 5,
+    entities = [JobPerformance::class, Customer::class],
+    version = 6,
     exportSchema = false
 )
 @TypeConverters(DatabaseConverters::class)
@@ -30,55 +29,58 @@ abstract class WerkDatabase : RoomDatabase() {
     ) : RoomDatabase.Callback() {
         override fun onOpen(db: SupportSQLiteDatabase) {
             super.onOpen(db)
-            KParameter.Kind.INSTANCE?.let { database ->
+            INSTANCE?.let { database ->
                 scope.launch {
-                    populateDatabase(database.JobPerformanceDao)
-                    var jobPerformanceDao = database.jobPerformanceDao()
-                    suspend fun populateDatabase(
-                        jobPerformanceDao: JobPerformanceDao,
-                        customer: Customer
-                    ) {
-                        jobPerformanceDao.deleteJobPerformance()
-                        customerDao.deleteCustomer()
-                        var begintijd = Calendar.getInstance().time
-                        var eindtijd = begintijd
-                        var jobPerformance = JobPerformance(2, 2, begintijd, eindtijd, 240)
-                    }
+                    // Customers
+                    populateCustomers(database.customersDao())
+
+                    // Job Performances
+                    populateJobPerformances(database.jobPerformanceDao())
                 }
             }
+        }
 
+        suspend fun populateCustomers(customersDao: CustomersDao) {
+            customersDao.deleteAll()
+            customersDao.insert(Customer("Keulemans", "015234578"))
+            customersDao.insert(Customer("Thys", "04789562"))
+        }
 
+        suspend fun populateJobPerformances(jobPerformanceDao : JobPerformanceDao) {
+            jobPerformanceDao.deleteAll()
+
+            val begintijd1 = Calendar.getInstance().time
+            val jobPerformance1 = JobPerformance(1, 1, begintijd1, begintijd1, 240)
+            jobPerformanceDao.insert(jobPerformance1)
+
+            val begintijd2 = Calendar.getInstance().time
+            val jobPerformance2 = JobPerformance(2, 2, begintijd2, begintijd2, 240)
+            jobPerformanceDao.insert(jobPerformance2)
         }
 
     }
 
 
+    companion object {
 
+        @Volatile
+        private var INSTANCE: WerkDatabase? = null
 
-companion object {
-
-    @Volatile
-    private var INSTANCE ?: WerkDatabase? = null
-
-    fun getDatabase(
-        context: Context,
-        scope: CoroutineScope
-    ):
-            WerkDatabase {
-        val tempInstance = INSTANCE
-        if (tempInstance != null) {
-            return tempInstance
-        }
-        return INSTANCE ? : synchronized(this) {
-            val instance = Room.databaseBuilder(
-                context.applicationContext,
-                WerkDatabase::class.java,
-                "werk_database"
-            ) addCallback (WerkDatabase(scope)
-                .build()
-                    INSTANCE = instance
-                    return instance
+        fun getDatabase(
+            context: Context,
+            scope: CoroutineScope
+        ): WerkDatabase {
+            return INSTANCE ?: synchronized(this) {
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    WerkDatabase::class.java,
+                    "werk_database"
+                )
+                    .addCallback(WerkDatabaseCallback(scope))
+                    .build()
+                INSTANCE = instance
+                return instance
+            }
         }
     }
-}
 }

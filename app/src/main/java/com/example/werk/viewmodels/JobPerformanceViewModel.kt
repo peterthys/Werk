@@ -23,10 +23,9 @@ class JobPerformanceViewModel(application: Application) : AndroidViewModel(appli
 
 
     init {
-        val jobPerformanceDao = WerkDatabase.getDatabase(application).jobPerformanceDao()
-        val customersDao = WerkDatabase.getDatabase(application).customersDao()
-        repository=
-            JobPerformanceRepository(jobPerformanceDao,customersDao)
+        val jobPerformanceDao = WerkDatabase.getDatabase(application, viewModelScope).jobPerformanceDao()
+        val customersDao = WerkDatabase.getDatabase(application, viewModelScope).customersDao()
+        repository = JobPerformanceRepository(jobPerformanceDao,customersDao)
         allJobPerformances = repository.allJobPerformances
     }
 

@@ -10,7 +10,6 @@ import com.example.werk.R
 import com.example.werk.klassen.Customer
 import com.example.werk.klassen.JobPerformance
 import kotlinx.android.synthetic.main.fragment_customer_overview.*
-import kotlinx.android.synthetic.main.fragment_overview.*
 import java.util.*
 
 class CustomerOverviewFragment : Fragment() {
@@ -27,7 +26,6 @@ class CustomerOverviewFragment : Fragment() {
 
         listCustomers.add(
             Customer(
-                1,
                 1,
                 "Ceulemans Peter",
                 "Aannemer  ",
