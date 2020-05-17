@@ -43,7 +43,7 @@
 
     <fragment
         android:id="@+id/customerOverviewFragment"
-        android:name="com.example.werk.customerOverviewFragment"
+        android:name="com.example.werk.gui.CustomerOverviewFragment"
         android:label="fragment_customer_overview"
         tools:layout="@layout/fragment_customer_overview" />
 </navigation>
