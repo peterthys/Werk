@@ -7,12 +7,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.werk.R
 import com.example.werk.klassen.Customer
-import com.example.werk.klassen.JobPerformance
 import kotlinx.android.synthetic.main.ticket_customers_overview.view.*
-import kotlinx.android.synthetic.main.ticket_job_performances_overview.view.*
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 class CustomerListAdapter (private val customersList: ArrayList<Customer>) :
     RecyclerView.Adapter<CustomerListAdapter.CustomersViewHolder>() {
@@ -64,6 +61,9 @@ class CustomerListAdapter (private val customersList: ArrayList<Customer>) :
         val textView6: TextView = itemView.tv_description
         val textView7: TextView = itemView.tv_BTWnr
         val textView8: TextView = itemView.tv_info
+
+
+
 
 
 
