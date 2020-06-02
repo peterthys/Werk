@@ -7,8 +7,6 @@ import com.example.werk.klassen.Customer
 @Dao
 interface CustomersDao {
 
-
-
         @Query("SELECT * FROM customer_table")
         fun getAll(): LiveData<List<Customer>>
 

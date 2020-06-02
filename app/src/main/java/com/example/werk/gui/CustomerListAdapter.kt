@@ -39,17 +39,6 @@ class CustomerListAdapter (private val customersList: ArrayList<Customer>) :
         holder.textView7.text = currentJP.customerBTWnr
         holder.textView8.text = currentJP.customerInfo
 
-//        if (currentJP.beginTime != null) {
-//            holder.textView2.text = dateFormat.format(currentJP.beginTime)
-//        } else {
-//            holder.textView2.text = ""
-//        }
-
-//        if (currentJP.endTime != null) {
-//            holder.textView3.text = dateFormat.format(currentJP.endTime)
-//        } else {
-//            holder.textView3.text = ""
-//        }
     }
 
     class CustomersViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

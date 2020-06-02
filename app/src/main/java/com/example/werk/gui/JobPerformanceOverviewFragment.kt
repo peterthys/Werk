@@ -15,12 +15,17 @@ import java.util.*
 /**
  * A simple [Fragment] subclass.
  */
-class OverviewFragment : Fragment() {
+class JobPerformanceOverviewFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_overview, container, false)
+        val recyclerView = recycler_view_jobPerformance
+        val adapter = JobPerformanceListAdapter(ArrayList<JobPerformance>())
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(context)
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -44,7 +49,7 @@ class OverviewFragment : Fragment() {
 
         )
 
-        var begintijd = Calendar.getInstance().time
+        var begintijd : Date  = Calendar.getInstance().time
         var eindtijd = Calendar.getInstance().time
 
         listJobPerformances.add(JobPerformance(0, 0, begintijd, eindtijd, 30))

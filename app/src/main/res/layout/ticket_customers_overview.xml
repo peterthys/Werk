@@ -16,6 +16,7 @@
         android:text="CustomerName"
         android:textSize="18dp"
         android:textStyle="bold"
+        style="@style/jobPerformance_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

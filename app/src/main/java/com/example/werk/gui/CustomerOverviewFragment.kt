@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.werk.R
 import com.example.werk.klassen.Customer
 import com.example.werk.klassen.JobPerformance
@@ -17,6 +18,10 @@ class CustomerOverviewFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_customer_overview, container, false)
+        val recyclerView : RecyclerView = recyclerview_customer
+        val adapter = CustomerListAdapter(ArrayList<Customer>())
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(context)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -40,18 +45,13 @@ class CustomerOverviewFragment : Fragment() {
 
         )
 
-//        var begintijd = Calendar.getInstance().time
-//        var eindtijd = Calendar.getInstance().time
-//
-//        listJobPerformances.add(JobPerformance(0, 0, begintijd, eindtijd, 30))
-//        listJobPerformances.add((JobPerformance(1, 1, begintijd, eindtijd, 60)))
         try {
-            recycler_view_customer.adapter =
+            recyclerview_customer.adapter =
                 CustomerListAdapter(
                     listCustomers
                 )
-            recycler_view_customer.layoutManager = LinearLayoutManager(context)
-            recycler_view_customer.setHasFixedSize(true)
+            recyclerview_customer.layoutManager = LinearLayoutManager(context)
+            recyclerview_customer.setHasFixedSize(true)
         } catch (e : Exception) {
             e.printStackTrace()
         }

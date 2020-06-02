@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.werk.R
 import kotlinx.android.synthetic.main.fragment_main.*
+import java.time.format.DateTimeFormatter
 
 
 class MainFragment : Fragment() {
@@ -24,6 +25,23 @@ class MainFragment : Fragment() {
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_main, container, false)
+
+//        var t1 : Date
+//        val buSelected = view as Button
+//        when (buSelected.id) {
+//            bt_beginTime.id -> {
+//                var timePressed = Calendar.getInstance().time
+//                t1 = timePressed
+          var formatterBegin = DateTimeFormatter.ofPattern(("HH:mm"))
+//                var formattedBegin = currentBegin.format(formatterBegin)
+//
+//                //  var beginUur = DateFormat.getTimeInstance().format(calendar.getTime())
+//                bt_beginTime.text = formattedBegin
+//
+//
+//            }
+//        }
+
 
     }
 

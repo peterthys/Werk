@@ -8,7 +8,9 @@
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/customer_recyclerview"
         xmlns:android="http://schemas.android.com/apk/res/android"
+        tools:listitem="@layout/ticket_customers_overview"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -16,7 +18,7 @@
         tools:context=".MainActivity">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_customer"
+            android:id="@+id/recyclerview_customer"
             android:layout_width="0dp"
             android:layout_height="0dp"
             tools:listitem="@layout/ticket_customers_overview"
@@ -26,6 +28,16 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+
+            android:src="@drawable/ic_add_black_24dp"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

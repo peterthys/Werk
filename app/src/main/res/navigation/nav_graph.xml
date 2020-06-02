@@ -24,7 +24,7 @@
 
     <fragment
         android:id="@+id/overviewFragment"
-        android:name="com.example.werk.gui.OverviewFragment"
+        android:name="com.example.werk.gui.JobPerformanceOverviewFragment"
         android:label="fragment_overview"
         tools:layout="@layout/fragment_overview" >
         <action
