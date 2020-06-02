@@ -8,12 +8,21 @@
     tools:context=".MainActivity">
 
 
-    <Button
-        android:id="@+id/bt_new_customer"
+    <NumberPicker
+        android:id="@+id/numberPickerCustomers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toStartOf="@+id/bt_new_customer"
+        app:layout_constraintHorizontal_bias="0.436"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/bt_new_customer"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="84dp"
-        android:text="New  Customer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.91"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,9 +32,9 @@
         android:id="@+id/bt_beginTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="44dp"
-        android:text="BeginTime : "
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="92dp"
+        android:hint="BeginTime : "
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bt_new_customer" />
 
@@ -33,20 +42,63 @@
         android:id="@+id/bt_endTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="92dp"
         android:text="EndTime : "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.737"
+        app:layout_constraintStart_toEndOf="@+id/bt_beginTime"
+        app:layout_constraintTop_toBottomOf="@+id/bt_new_customer" />
+
+    <TextView
+        android:id="@+id/tv_pauze_uur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="104dp"
+        android:text="PAUSE  : "
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bt_beginTime" />
 
     <TextView
-        android:id="@+id/tv_pause"
+
+        android:id="@+id/tv_pauze_minuten"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="68dp"
-        android:text="   Pause   "
+        android:layout_marginTop="104dp"
+        android:text="hour "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.355"
+        app:layout_constraintStart_toEndOf="@+id/tv_pauze_uur"
+        app:layout_constraintTop_toBottomOf="@+id/bt_beginTime" />
+
+    <NumberPicker
+        android:id="@+id/numerberPickerHours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toStartOf="@+id/tv_pauze_minuten"
+        app:layout_constraintHorizontal_bias="0.786"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_beginTime" />
+
+    <NumberPicker
+        android:id="@+id/numberPickerMinutes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.222"
+        app:layout_constraintStart_toEndOf="@+id/tv_pauze_minuten"
+        app:layout_constraintTop_toBottomOf="@+id/bt_endTime" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="104dp"
+        android:layout_marginEnd="28dp"
+        android:text="minutes"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bt_endTime" />
 
     <Button
@@ -63,25 +115,12 @@
         android:id="@+id/bt_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="52dp"
-        android:layout_marginBottom="216dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="60dp"
         android:text="Add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <EditText
-        android:id="@+id/et_Customer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="84dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Customer"
-        app:layout_constraintEnd_toStartOf="@+id/bt_new_customer"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <!--    <Spinner-->
 <!--        android:id="@+id/sp_spinner"-->

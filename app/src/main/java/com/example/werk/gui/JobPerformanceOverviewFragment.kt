@@ -21,7 +21,7 @@ class JobPerformanceOverviewFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_overview, container, false)
-        val recyclerView = recycler_view_jobPerformance
+        val recyclerView = recyclerview_jobPerformance
         val adapter = JobPerformanceListAdapter(ArrayList<JobPerformance>())
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context)
@@ -55,12 +55,12 @@ class JobPerformanceOverviewFragment : Fragment() {
         listJobPerformances.add(JobPerformance(0, 0, begintijd, eindtijd, 30))
         listJobPerformances.add((JobPerformance(1, 1, begintijd, eindtijd, 60)))
         try {
-            recycler_view_jobPerformance.adapter =
+            recyclerview_jobPerformance.adapter =
                 JobPerformanceListAdapter(
                     listJobPerformances
                 )
-            recycler_view_jobPerformance.layoutManager = LinearLayoutManager(context)
-            recycler_view_jobPerformance.setHasFixedSize(true)
+            recyclerview_jobPerformance.layoutManager = LinearLayoutManager(context)
+            recyclerview_jobPerformance.setHasFixedSize(true)
         } catch (e : Exception) {
             e.printStackTrace()
         }

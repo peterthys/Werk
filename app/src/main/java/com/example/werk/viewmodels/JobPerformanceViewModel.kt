@@ -27,5 +27,6 @@ class JobPerformanceViewModel(application: Application) : AndroidViewModel(appli
     fun insert(jobPerformance: JobPerformance) = viewModelScope.launch(Dispatchers.IO) {
         repository.insert(jobPerformance)
     }
+
 }
 

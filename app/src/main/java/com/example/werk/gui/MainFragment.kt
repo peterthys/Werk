@@ -5,71 +5,44 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.EditText
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.werk.R
 import kotlinx.android.synthetic.main.fragment_main.*
-import java.time.format.DateTimeFormatter
+
 
 
 class MainFragment : Fragment() {
+    var beginTimeInHours: Int = 0
+    var beginTimeInMinutes: Int = 0
 
-    private lateinit var editWordView: EditText
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_main, container, false)
+        bt_beginTime.setOnClickListener()
+        return view
 
-//        var t1 : Date
-//        val buSelected = view as Button
-//        when (buSelected.id) {
-//            bt_beginTime.id -> {
-//                var timePressed = Calendar.getInstance().time
-//                t1 = timePressed
-          var formatterBegin = DateTimeFormatter.ofPattern(("HH:mm"))
-//                var formattedBegin = currentBegin.format(formatterBegin)
-//
-//                //  var beginUur = DateFormat.getTimeInstance().format(calendar.getTime())
-//                bt_beginTime.text = formattedBegin
-//
-//
-//            }
-//        }
 
 
     }
 
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        bt_new_customer.text = "New " +
+                "Customer"
+
 
         var customersArray = arrayOf("Customer 1", "Customer 2", "Customer 3", "Customer 4")
         val arrayAdapter =
             ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, customersArray)
-
-//        sp_spinner.adapter = arrayAdapter
-//        sp_spinner.onItemSelectedListener = object :
-//            AdapterView.OnItemSelectedListener {
-//            override fun onNothingSelected(parent: AdapterView<*>?) {
-//                TODO("Not yet implemented")
-//          }
-//
-//            override fun onItemSelected(
-//                parent: AdapterView<*>?,
-//                view: View?,
-//                position: Int,
-//                id: Long
-//            ) {
-//                //tv_customer.text= customersArray[position]
-//
-//            }
-//        }
 
         bt_new_customer.setOnClickListener {
             view.findNavController().navigate(R.id.action_mainFragment_to_newCustomerFragment)
@@ -83,6 +56,48 @@ class MainFragment : Fragment() {
         bt_add.setOnClickListener {
             view.findNavController().navigate(R.id.action_mainFragment_to_overviewFragment)
         }
+
+        val pickerCustomers = numberPickerCustomers
+        if (pickerCustomers != null) {
+            pickerCustomers.minValue = 0
+            pickerCustomers.wrapSelectorWheel = true
+            pickerCustomers.maxValue = customersArray.size - 1
+            pickerCustomers.displayedValues = customersArray
+        }
+        val pickerHours = numerberPickerHours
+        pickerHours.minValue = 0
+        pickerHours.maxValue = 12
+        pickerHours.wrapSelectorWheel = true
+
+        val pickerMinutes = numberPickerMinutes
+        pickerMinutes.minValue = 0
+        pickerMinutes.maxValue = 60
+        pickerMinutes.value = 30
+        pickerMinutes.wrapSelectorWheel = true
+
+        fun showBeginTime(view: View) {
+
+            val buSelected = view as Button
+            when (buSelected.id) {
+                bt_beginTime.id -> {
+                    bt_beginTime.text = "hoera"
+//                    val t3 = Calendar.getInstance()
+//                    beginTimeInHours = t3.get(Calendar.HOUR_OF_DAY)
+//                    beginTimeInMinutes = t3.get(Calendar.MINUTE)
+//                    val result = beginTimeInHours.toString() + ":" + beginTimeInMinutes.toString()
+//
+//                    bt_beginTime.text = result
+
+                }
+            }
+
+        }
+
+
     }
 
+}
+
+private fun Button.setOnClickListener() {
+    TODO("Not yet implemented")
 }
