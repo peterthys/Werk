@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@color/colorPrimary"
     tools:context=".MainActivity">
 
 
@@ -13,6 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:backgroundTint="@color/design_default_color_secondary"
         app:layout_constraintEnd_toStartOf="@+id/bt_new_customer"
         app:layout_constraintHorizontal_bias="0.436"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,6 +24,7 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="84dp"
+        android:backgroundTint="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.91"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,6 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginTop="92dp"
+        android:backgroundTint="@android:color/holo_orange_light"
         android:hint="BeginTime : "
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bt_new_customer" />
@@ -43,32 +46,35 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="92dp"
-        android:text="EndTime : "
+        android:backgroundTint="@android:color/holo_orange_light"
+        android:hint="EndTime : "
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.737"
         app:layout_constraintStart_toEndOf="@+id/bt_beginTime"
         app:layout_constraintTop_toBottomOf="@+id/bt_new_customer" />
 
     <TextView
-        android:id="@+id/tv_pauze_uur"
+        android:id="@+id/tv_pause_hour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="104dp"
+        android:backgroundTint="@color/design_default_color_primary"
         android:text="PAUSE  : "
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bt_beginTime" />
 
     <TextView
 
-        android:id="@+id/tv_pauze_minuten"
+        android:id="@+id/tv_pause_minutes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="104dp"
+        android:backgroundTint="@color/colorPrimary"
         android:text="hour "
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.355"
-        app:layout_constraintStart_toEndOf="@+id/tv_pauze_uur"
+        app:layout_constraintStart_toEndOf="@+id/tv_pause_hour"
         app:layout_constraintTop_toBottomOf="@+id/bt_beginTime" />
 
     <NumberPicker
@@ -76,7 +82,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        app:layout_constraintEnd_toStartOf="@+id/tv_pauze_minuten"
+        app:layout_constraintEnd_toStartOf="@+id/tv_pause_minutes"
         app:layout_constraintHorizontal_bias="0.786"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bt_beginTime" />
@@ -86,9 +92,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
+        android:backgroundTint="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.222"
-        app:layout_constraintStart_toEndOf="@+id/tv_pauze_minuten"
+        app:layout_constraintStart_toEndOf="@+id/tv_pause_minutes"
         app:layout_constraintTop_toBottomOf="@+id/bt_endTime" />
 
     <TextView
@@ -97,6 +104,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="104dp"
         android:layout_marginEnd="28dp"
+        android:backgroundTint="@color/colorPrimary"
         android:text="minutes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bt_endTime" />
@@ -123,15 +131,15 @@
 
 
     <!--    <Spinner-->
-<!--        android:id="@+id/sp_spinner"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:layout_marginStart="52dp"-->
-<!--        android:layout_marginTop="84dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/bt_new_customer"-->
-<!--        app:layout_constraintEnd_toStartOf="@+id/bt_new_customer"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+    <!--        android:id="@+id/sp_spinner"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:layout_marginStart="52dp"-->
+    <!--        android:layout_marginTop="84dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@+id/bt_new_customer"-->
+    <!--        app:layout_constraintEnd_toStartOf="@+id/bt_new_customer"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

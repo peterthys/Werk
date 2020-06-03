@@ -6,6 +6,8 @@ import com.example.werk.viewmodels.JobPerformanceViewModel
 
 class MainActivity : AppCompatActivity() {
 
+
+
     private lateinit var jobPerformanceViewModelViewModel: JobPerformanceViewModel
 
 
@@ -14,5 +16,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
+
+
     }
+
+
+
+
 }
+
+

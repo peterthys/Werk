@@ -17,11 +17,14 @@ class CustomerOverviewFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_customer_overview, container, false)
+        val v : View = inflater.inflate(R.layout.fragment_customer_overview, container, false)
+
         val recyclerView : RecyclerView = recyclerview_customer
         val adapter = CustomerListAdapter(ArrayList<Customer>())
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context)
+
+        return v
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

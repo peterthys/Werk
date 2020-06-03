@@ -6,10 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.werk.R
 import com.example.werk.klassen.Customer
 import com.example.werk.klassen.JobPerformance
-import kotlinx.android.synthetic.main.fragment_overview.*
+import kotlinx.android.synthetic.main.fragment_job_performance_overview.*
 import java.util.*
 
 /**
@@ -20,12 +21,14 @@ class JobPerformanceOverviewFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_overview, container, false)
-        val recyclerView = recyclerview_jobPerformance
+        val v : View = inflater.inflate(R.layout.fragment_job_performance_overview, container, false)
+
+        val recyclerView : RecyclerView = recyclerview_jobPerformance
         val adapter = JobPerformanceListAdapter(ArrayList<JobPerformance>())
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context)
 
+        return v
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

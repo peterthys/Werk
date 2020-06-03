@@ -26,7 +26,7 @@
         android:id="@+id/jobPerformanceOverviewFragment"
         android:name="com.example.werk.gui.JobPerformanceOverviewFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_overview" >
+        tools:layout="@layout/fragment_job_performance_overview" >
         <action
             android:id="@+id/action_overviewFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
