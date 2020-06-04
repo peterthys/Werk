@@ -1,6 +1,5 @@
 package com.example.werk.gui
 
-import android.icu.util.BuddhistCalendar.BE
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,6 @@ import com.example.werk.klassen.JobPerformance
 import kotlinx.android.synthetic.main.ticket_job_performances_overview.view.*
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 class JobPerformanceListAdapter(private val jobPerformanceList: ArrayList<JobPerformance>) :
     RecyclerView.Adapter<JobPerformanceListAdapter.JobPerformanceViewHolder>() {
@@ -34,6 +32,7 @@ class JobPerformanceListAdapter(private val jobPerformanceList: ArrayList<JobPer
 
         holder.textView1.text = currentJP.customerId.toString()
         holder.textView4.text = currentJP.pause.toString()
+
 
         if (currentJP.beginTime != null) {
             holder.textView2.text = dateFormat.format(currentJP.beginTime)

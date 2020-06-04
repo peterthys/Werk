@@ -12,7 +12,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import java.util.*
 
-//https://codelabs.developers.google.com/codelabs/android-room-with-a-view-kotlin/#11
+
 @Database(
     entities = [JobPerformance::class, Customer::class],
     version = 6,

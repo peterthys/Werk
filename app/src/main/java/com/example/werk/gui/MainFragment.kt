@@ -1,10 +1,15 @@
 package com.example.werk.gui
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.NumberPicker
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.werk.R
@@ -13,6 +18,13 @@ import java.util.*
 
 
 class MainFragment : Fragment() {
+    private lateinit var editWordView1: NumberPicker
+    private lateinit var editWordView2: Button
+    private lateinit var editWordView3: Button
+    private lateinit var editWordView4: NumberPicker
+    private lateinit var editWordView5: NumberPicker
+
+
 
     var beginTimeInHours: Int = 0
     var beginTimeInMinutes: Int = 0
@@ -27,7 +39,28 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        val v = inflater.inflate(R.layout.fragment_main, container, false)
+
+        editWordView1 = np_customers
+        editWordView2 = bt_beginTime
+        editWordView3 = bt_endTime
+        editWordView4 = np_pause_hours
+        editWordView5 = np_pause_minutes
+
+        val button = bt_add
+        button.setOnClickListener {
+            val replyIntent = Intent()
+            if (TextUtils.isEmpty(editWordView1.toString())) {
+                getActivity()?.setResult(Activity.RESULT_CANCELED, replyIntent)
+            } else {
+                val customer = editWordView1.toString()
+                replyIntent.putExtra(NewCustomerFragment.EXTRA_REPLY, customer)
+                getActivity()?.setResult(Activity.RESULT_OK, replyIntent)
+            }
+            getActivity()?.finish()
+        }
+
+        return v
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -63,19 +96,19 @@ class MainFragment : Fragment() {
         }
 
 
-        val pickerCustomers = numberPickerCustomers
+        val pickerCustomers = np_customers
         if (pickerCustomers != null) {
             pickerCustomers.minValue = 0
             pickerCustomers.wrapSelectorWheel = true
             pickerCustomers.maxValue = customersArray.size - 1
             pickerCustomers.displayedValues = customersArray
         }
-        val pickerHours = numerberPickerHours
+        val pickerHours = np_pause_hours
         pickerHours.minValue = 0
         pickerHours.maxValue = 12
         pickerHours.wrapSelectorWheel = true
 
-        val pickerMinutes = numberPickerMinutes
+        val pickerMinutes = np_pause_minutes
         pickerMinutes.minValue = 0
         pickerMinutes.maxValue = 60
         pickerMinutes.value = 30
@@ -100,8 +133,8 @@ class MainFragment : Fragment() {
 
     }
     fun calculateResult() {
-        pauseHours = numerberPickerHours.value
-        pauseMinutes = numberPickerMinutes.value
+        pauseHours = np_pause_hours.value
+        pauseMinutes = np_pause_minutes.value
         val pauzeTotaal = pauseHours * 60 + pauseMinutes
         var timeWorked =
             ((endTimeInHours * 60) + (endTimeInMinutes)) - ((beginTimeInHours * 60) + (beginTimeInMinutes)) - pauzeTotaal
@@ -110,6 +143,9 @@ class MainFragment : Fragment() {
         var result: String =
             timeWorkedInHours.toString() + " u  " + timeWorkedInMinutes.toString() + " min."
         bt_add.text = result
+    }
+    companion object {
+        const val EXTRA_REPLY = "com.example.android.wordlistsql.REPLY"
     }
 }
 
