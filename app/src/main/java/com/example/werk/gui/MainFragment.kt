@@ -27,11 +27,7 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val v = inflater.inflate(R.layout.fragment_main, container, false)
-
-
-
-        return v
+        return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
