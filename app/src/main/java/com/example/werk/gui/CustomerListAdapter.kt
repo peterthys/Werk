@@ -1,5 +1,6 @@
 package com.example.werk.gui
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,27 +9,33 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.werk.R
 import com.example.werk.klassen.Customer
 import kotlinx.android.synthetic.main.ticket_customers_overview.view.*
-import java.text.SimpleDateFormat
-import java.util.*
 
-class CustomerListAdapter (private val customersList: ArrayList<Customer>) :
-    RecyclerView.Adapter<CustomerListAdapter.CustomersViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomersViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(
+class CustomerListAdapter internal constructor(context: Context) : RecyclerView.Adapter<CustomerListAdapter.CustomerViewHolder>() {
+
+    private val inflater: LayoutInflater = LayoutInflater.from(context)
+    private var customers = emptyList<Customer>() // Cached copy of words
+
+    inner class CustomerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val textView1: TextView = itemView.tv_customerName
+        val textView2: TextView = itemView.tv_email
+        val textView3: TextView = itemView.tv_phone
+        val textView4: TextView = itemView.tv_adress1
+        val textView5: TextView = itemView.tv_adress2
+        val textView6: TextView = itemView.tv_description
+        val textView7: TextView = itemView.tv_BTWnr
+        val textView8: TextView = itemView.tv_info
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomerViewHolder {
+        val itemView = inflater.inflate(
             R.layout.ticket_customers_overview,
             parent, false
         )
-        return CustomersViewHolder(
-            itemView
-        )
+        return CustomerViewHolder(itemView)
     }
 
-    override fun getItemCount(): Int = customersList.size
-
-    override fun onBindViewHolder(holder: CustomersViewHolder, position: Int) {
-        val currentJP = customersList[position]
-
-        val dateFormat = SimpleDateFormat("HH:mm", Locale.FRANCE)
+    override fun onBindViewHolder(holder: CustomerViewHolder, position: Int) {
+        val currentJP = customers[position]
 
         holder.textView1.text = currentJP.customerName
         holder.textView2.text = currentJP.customerEmail
@@ -38,26 +45,14 @@ class CustomerListAdapter (private val customersList: ArrayList<Customer>) :
         holder.textView6.text = currentJP.customerDescription
         holder.textView7.text = currentJP.customerBTWnr
         holder.textView8.text = currentJP.customerInfo
-
     }
 
-    class CustomersViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val textView1: TextView = itemView.tv_customerName
-        val textView2: TextView = itemView.tv_email
-        val textView3: TextView = itemView.tv_phone
-        val textView4: TextView = itemView.tv_adress1
-        val textView5: TextView = itemView.tv_adress2
-        val textView6: TextView = itemView.tv_description
-        val textView7: TextView = itemView.tv_BTWnr
-        val textView8: TextView = itemView.tv_info
 
-
-
-
-
-
-
-
+    internal fun setCustomers(customers: List<Customer>) {
+        this.customers = customers
+        notifyDataSetChanged()
     }
+
+    override fun getItemCount(): Int = customers.size
 
 }

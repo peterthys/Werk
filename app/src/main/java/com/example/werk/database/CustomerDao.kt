@@ -5,13 +5,16 @@ import androidx.room.*
 import com.example.werk.klassen.Customer
 
 @Dao
-interface CustomersDao {
+interface CustomerDao {
 
         @Query("SELECT * FROM customer_table")
         fun getAll(): LiveData<List<Customer>>
 
         @Query("SELECT * FROM customer_table WHERE id = :customerId")
         fun findByCustomerId(customerId: Int): Customer
+
+        @Query("SELECT * FROM customer_table WHERE id = :customerName")
+        fun findByCustomerName(customerName: String): Customer
 
         @Insert(onConflict = OnConflictStrategy.IGNORE)
         suspend fun insert(customer: Customer)
@@ -23,10 +26,10 @@ interface CustomersDao {
         suspend fun deleteAll()
 
         @Delete
-        fun deleteJobPerformance(vararg customer: Customer)
+        fun deleteCustomer(vararg customer: Customer)
 
         @Update
-        fun updateJobPerformance(vararg customer: Customer)
+        fun updateCustomer(vararg customer: Customer)
 
 
 }

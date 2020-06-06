@@ -1,15 +1,10 @@
 package com.example.werk.gui
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.NumberPicker
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.werk.R
@@ -18,13 +13,6 @@ import java.util.*
 
 
 class MainFragment : Fragment() {
-    private lateinit var editWordView1: NumberPicker
-    private lateinit var editWordView2: Button
-    private lateinit var editWordView3: Button
-    private lateinit var editWordView4: NumberPicker
-    private lateinit var editWordView5: NumberPicker
-
-
 
     var beginTimeInHours: Int = 0
     var beginTimeInMinutes: Int = 0
@@ -41,24 +29,7 @@ class MainFragment : Fragment() {
     ): View? {
         val v = inflater.inflate(R.layout.fragment_main, container, false)
 
-        editWordView1 = np_customers
-        editWordView2 = bt_beginTime
-        editWordView3 = bt_endTime
-        editWordView4 = np_pause_hours
-        editWordView5 = np_pause_minutes
 
-        val button = bt_add
-        button.setOnClickListener {
-            val replyIntent = Intent()
-            if (TextUtils.isEmpty(editWordView1.toString())) {
-                getActivity()?.setResult(Activity.RESULT_CANCELED, replyIntent)
-            } else {
-                val customer = editWordView1.toString()
-                replyIntent.putExtra(NewCustomerFragment.EXTRA_REPLY, customer)
-                getActivity()?.setResult(Activity.RESULT_OK, replyIntent)
-            }
-            getActivity()?.finish()
-        }
 
         return v
     }

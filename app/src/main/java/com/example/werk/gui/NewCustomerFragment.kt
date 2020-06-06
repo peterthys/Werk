@@ -1,66 +1,62 @@
 package com.example.werk.gui
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.example.werk.R
+import com.example.werk.klassen.Customer
+import com.example.werk.viewmodels.NewCustomerViewModel
 import kotlinx.android.synthetic.main.fragment_new_customer.*
 
 /**
  * A simple [Fragment] subclass.
  */
 class NewCustomerFragment : Fragment() {
-    private lateinit var editWordView1: EditText
-    private lateinit var editWordView2: EditText
-    private lateinit var editWordView3: EditText
-    private lateinit var editWordView4: EditText
-    private lateinit var editWordView5: EditText
-    private lateinit var editWordView6: EditText
-    private lateinit var editWordView7: EditText
-    private lateinit var editWordView8: EditText
+
+    private lateinit var viewModel: NewCustomerViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val v = inflater.inflate(R.layout.fragment_new_customer, container, false)
-        // Inflate the layout for this fragment
-
-
-        editWordView1 = et_name
-        editWordView2 = et_description
-        editWordView3 = et_email
-        editWordView4 = et_phone
-        editWordView5 = et_adress1
-        editWordView6 = et_adress2
-        editWordView7 = et_btw
-        editWordView8 = et_info
-
-
-        val button = bt_add
-        button.setOnClickListener {
-            val replyIntent = Intent()
-            if (TextUtils.isEmpty(editWordView1.text)) {
-                getActivity()?.setResult(Activity.RESULT_CANCELED, replyIntent)
-            } else {
-                val name = editWordView1.text.toString()
-                replyIntent.putExtra(EXTRA_REPLY, name)
-                getActivity()?.setResult(Activity.RESULT_OK, replyIntent)
-            }
-            getActivity()?.finish()
-        }
         return v
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
 
-    companion object {
-        const val EXTRA_REPLY = "com.example.android.customerlistsql.REPLY"
+        viewModel = ViewModelProvider(this).get(NewCustomerViewModel::class.java)
+
+        bt_add.setOnClickListener {
+            if (checkCustomer()) {
+                // 1. Customer maken
+                var customer = Customer()
+                customer.customerName = et_name.text.toString()
+                customer.customerDescription = et_description.text.toString()
+                customer.customerEmail = et_email.text.toString()
+                //...
+
+                // 2. NewCustomerViewModel.saveCustomer(...)
+                viewModel.saveCustomer(customer)
+
+                // 3. Terug naar customer overview
+                view?.findNavController()?.navigate(R.id.action_customerFragment_to_customerOverviewFragment)
+            }
+        }
     }
 
+    private fun checkCustomer() : Boolean {
+        val name = et_name.text
+        if (name.isEmpty()) {
+            et_name.error = "Naam mag niet leeg zijn onnozelaar!"
+            return false
+        }
+
+        return true
+    }
 }
