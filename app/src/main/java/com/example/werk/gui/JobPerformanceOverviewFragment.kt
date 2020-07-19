@@ -23,10 +23,10 @@ class JobPerformanceOverviewFragment : Fragment() {
         // Inflate the layout for this fragment
         val v : View = inflater.inflate(R.layout.fragment_job_performance_overview, container, false)
 
-        val recyclerView : RecyclerView = recyclerview_jobPerformance
+        val recyclerView : RecyclerView? = recyclerview_jobPerformance
         val adapter = JobPerformanceListAdapter(ArrayList<JobPerformance>())
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView?.adapter = adapter
+        recyclerView?.layoutManager = LinearLayoutManager(context)
 
         return v
     }

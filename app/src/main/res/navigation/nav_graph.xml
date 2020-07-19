@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_mainFragment_to_customerOverviewFragment"
             app:destination="@id/customerOverviewFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_jobPerformanceOverviewFragment"
+            app:destination="@id/jobPerformanceOverviewFragment" />
     </fragment>
 
     <fragment

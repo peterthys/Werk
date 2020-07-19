@@ -24,13 +24,14 @@ data class Customer(
     var customerInfo: String,
     @ColumnInfo(name = "customerBTWnr")
     var customerBTWnr: String
-) {
-    constructor() : this(0, "", "", "", "", "", "", "", "")
-    constructor(customerName : String, customerPhone : String) : this() {
-        this.customerName = customerName
-        this.customerPhone = customerPhone
-    }
-}
+)
+//{
+//    constructor() : this(0, "", "", "", "", "", "", "", "")
+//    constructor(customerName : String, customerPhone : String) : this() {
+//        this.customerName = customerName
+//        this.customerPhone = customerPhone
+//    }
+//}
 //{}
 //{
 //    constructor(

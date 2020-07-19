@@ -10,6 +10,9 @@ interface CustomerDao {
         @Query("SELECT * FROM customer_table")
         fun getAll(): LiveData<List<Customer>>
 
+        @Query("SELECT customerName FROM customer_table")
+        fun getAllNames(): LiveData<List<String>>
+
         @Query("SELECT * FROM customer_table WHERE id = :customerId")
         fun findByCustomerId(customerId: Int): Customer
 

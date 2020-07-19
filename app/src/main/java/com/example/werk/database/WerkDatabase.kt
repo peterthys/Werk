@@ -12,7 +12,7 @@ import kotlinx.coroutines.CoroutineScope
 
 @Database(
     entities = [JobPerformance::class, Customer::class],
-    version = 6,
+    version = 8,
     exportSchema = false
 )
 @TypeConverters(DatabaseConverters::class)
@@ -74,6 +74,7 @@ abstract class WerkDatabase : RoomDatabase() {
                     "werk_database"
                 )
                     //.addCallback(WerkDatabaseCallback(scope))
+                    .fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance
                 return instance

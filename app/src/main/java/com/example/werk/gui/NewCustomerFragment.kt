@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_new_customer.*
  */
 class NewCustomerFragment : Fragment() {
 
-    private lateinit var viewModel: NewCustomerViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +30,7 @@ class NewCustomerFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        viewModel = ViewModelProvider(this).get(NewCustomerViewModel::class.java)
+        val viewModel =  ViewModelProvider(this).get(NewCustomerViewModel::class.java)
 
         bt_add.setOnClickListener {
             if (checkCustomer()) {
@@ -39,21 +39,26 @@ class NewCustomerFragment : Fragment() {
                 customer.customerName = et_name.text.toString()
                 customer.customerDescription = et_description.text.toString()
                 customer.customerEmail = et_email.text.toString()
-                //...
+                customer.customerPhone = et_phone.text.toString()
+                customer.customerAdress1 = et_adress1.text.toString()
+                customer.customerAdress2 = et_adress2.text.toString()
+                customer.customerBTWnr = et_btw.text.toString()
+                customer.customerInfo = et_info.text.toString()
 
                 // 2. NewCustomerViewModel.saveCustomer(...)
                 viewModel.saveCustomer(customer)
 
                 // 3. Terug naar customer overview
-                view?.findNavController()?.navigate(R.id.action_customerFragment_to_customerOverviewFragment)
+                view?.findNavController()
+                    ?.navigate(R.id.action_customerFragment_to_customerOverviewFragment)
             }
         }
     }
 
-    private fun checkCustomer() : Boolean {
+    private fun checkCustomer(): Boolean {
         val name = et_name.text
         if (name.isEmpty()) {
-            et_name.error = "Naam mag niet leeg zijn onnozelaar!"
+            et_name.error = "Naam mag niet leeg !"
             return false
         }
 

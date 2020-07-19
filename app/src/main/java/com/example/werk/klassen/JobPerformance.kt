@@ -18,6 +18,4 @@ data class JobPerformance (
     @ColumnInfo (name = "pause")
     val pause: Int
 
-){
-
-}
+)

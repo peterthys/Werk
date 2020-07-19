@@ -11,6 +11,7 @@ class CustomerRepository(
     // Room executes all queries on a separate thread.
     // Observed LiveData will notify the observer when the data has changed.
     val allCustomers: LiveData<List<Customer>> = customerDao.getAll()
+    val allCustomerNames: LiveData<List<String>> = customerDao.getAllNames()
 
     suspend fun insertCustomer(customer: Customer) {
         customerDao.insert(customer)
