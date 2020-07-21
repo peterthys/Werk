@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.werk.R
@@ -29,6 +30,7 @@ class JobPerformanceOverviewFragment : Fragment() {
         recyclerView?.layoutManager = LinearLayoutManager(context)
 
         return v
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -36,21 +38,21 @@ class JobPerformanceOverviewFragment : Fragment() {
         var listCustomers = ArrayList<Customer>()
         var listJobPerformances = ArrayList<JobPerformance>()
 
-        listCustomers.add(
-            Customer(
-                1,
-                "Ceulemans Peter",
-                "Aannemer  ",
-                "0476418746",
-                "peterceulemans.bvba@skynet.be ",
-                "Schriekstraat 140 2223 Schriek",
-                "",
-
-                "BE0860 733 953 ",
-            "123123123"
-            )
-
-        )
+//        listCustomers.add(
+//            Customer(
+//                1,
+//                "Ceulemans Peter",
+//                "Aannemer  ",
+//                "0476418746",
+//                "peterceulemans.bvba@skynet.be ",
+//                "Schriekstraat 140 2223 Schriek",
+//                "",
+//
+//                "BE0860 733 953 ",
+//            "123123123"
+//            )
+//
+//        )
 
         var begintijd : Date  = Calendar.getInstance().time
         var eindtijd = Calendar.getInstance().time
@@ -66,6 +68,10 @@ class JobPerformanceOverviewFragment : Fragment() {
             recyclerview_jobPerformance.setHasFixedSize(true)
         } catch (e : Exception) {
             e.printStackTrace()
+        }
+        fab_return_to_mainfragment.setOnClickListener {
+            view?.findNavController()
+                ?.navigate(R.id.action_jobPerformanceOverviewFragment_to_mainFragment)
         }
     }
 

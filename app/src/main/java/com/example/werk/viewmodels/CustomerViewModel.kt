@@ -13,9 +13,7 @@ import kotlinx.coroutines.launch
 class CustomerViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository: CustomerRepository
-
     val allCustomers: LiveData<List<Customer>>
-
 
     init {
         val customerDao = WerkDatabase.getDatabase(application, viewModelScope).customerDao()

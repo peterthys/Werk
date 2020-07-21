@@ -33,13 +33,13 @@ class CustomerOverviewFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         recyclerView = recyclerview_customer
-        val adapter: CustomerListAdapter = context.let { CustomerListAdapter(it!!) }
-        recyclerView?.adapter = adapter
-        recyclerView?.layoutManager = LinearLayoutManager(context)
+        adapter = context.let { CustomerListAdapter(it!!) }
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(context)
 
         fab.setOnClickListener {
             view.findNavController()
-                .navigate(R.id.action_customerOverviewFragment_to_newCustomerFragment)
+                .navigate(R.id.action_customerOverviewFragment_to_mainFragment)
         }
     }
 
@@ -49,8 +49,9 @@ class CustomerOverviewFragment : Fragment() {
         customerViewModel = ViewModelProvider(this).get(CustomerViewModel::class.java)
         customerViewModel.allCustomers.observe(viewLifecycleOwner, Observer { customers ->
             // Update the cached copy of the words in the adapter.
-            customers?.let { adapter?.setCustomers(it) }
+            customers?.let { adapter.setCustomers(it) }
         })
+
     }
 
 }

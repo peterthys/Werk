@@ -12,14 +12,15 @@ import kotlinx.coroutines.launch
 class NewCustomerViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository: CustomerRepository
-
+    val customerDao = WerkDatabase.getDatabase(application, viewModelScope).customerDao()
     init {
         val customerDao = WerkDatabase.getDatabase(application, viewModelScope).customerDao()
         repository = CustomerRepository(customerDao)
     }
 
     fun saveCustomer(customer: Customer) = viewModelScope.launch(Dispatchers.IO) {
-        repository.saveCustomer(customer )
+        customerDao.save(customer )
     }
+
 
 }
