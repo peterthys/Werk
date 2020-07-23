@@ -57,8 +57,8 @@ class JobPerformanceOverviewFragment : Fragment() {
         var begintijd : Date  = Calendar.getInstance().time
         var eindtijd = Calendar.getInstance().time
 
-        listJobPerformances.add(JobPerformance(0, 0, begintijd, eindtijd, 30))
-        listJobPerformances.add((JobPerformance(1, 1, begintijd, eindtijd, 60)))
+//        listJobPerformances.add(JobPerformance(0, 0, begintijd, eindtijd, 30))
+//        listJobPerformances.add((JobPerformance(1, 1, begintijd, eindtijd, 60)))
         try {
             recyclerview_jobPerformance.adapter =
                 JobPerformanceListAdapter(

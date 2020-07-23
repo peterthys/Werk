@@ -11,21 +11,17 @@ import androidx.navigation.findNavController
 import com.example.werk.R
 import com.example.werk.viewmodels.MainViewModel
 import kotlinx.android.synthetic.main.fragment_main.*
-import java.util.*
+import java.text.SimpleDateFormat
 
 
 class MainFragment : Fragment() {
 
-    private lateinit var mainViewModel: MainViewModel
-
-    var beginTimeInHours: Int = 0
-    var beginTimeInMinutes: Int = 0
-    var endTimeInHours: Int = 0
-    var endTimeInMinutes: Int = 0
+    var beginTime = 0L
+    var endTime = 0L
     var pauseHours = 0
     var pauseMinutes = 0
 
-  //  var customersArray = arrayOf("Customer 1", "Customer 2", "Customer 3", "Customer 4")
+
 
 
     override fun onCreateView(
@@ -40,8 +36,6 @@ class MainFragment : Fragment() {
 
        //var customersArray= db.customerDao().getAllNames()
 
-        bt_new_customer.text = "New " +
-                "Customer"
 
 //        val arrayAdapter =
 //            ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, customersArray)
@@ -55,16 +49,14 @@ class MainFragment : Fragment() {
                 .navigate(R.id.action_mainFragment_to_jobPerformanceOverviewFragment)
         }
 
-        bt_add.setOnClickListener {
-            view.findNavController().navigate(R.id.action_mainFragment_to_overviewFragment)
-
-        }
-
         bt_beginTime.setOnClickListener {
+            bt_beginTime.setEnabled(false)
             showBeginTime()
         }
         bt_endTime.setOnClickListener {
+            bt_endTime.setEnabled(false)
             showEndTime()
+            calculateResult()
         }
 //        bt_add.setOnClickListener{
 //            calculateResult()
@@ -75,8 +67,8 @@ class MainFragment : Fragment() {
         if (pickerCustomers != null) {
             pickerCustomers.minValue = 0
             pickerCustomers.wrapSelectorWheel = true
-            //pickerCustomers.maxValue = customersArray.size - 1
-            //pickerCustomers.displayedValues = customersArray
+//            pickerCustomers.maxValue = customersArray.size - 1
+//            pickerCustomers.displayedValues = customersArray
         }
         val pickerHours = np_pause_hours
         pickerHours.minValue = 0
@@ -93,7 +85,7 @@ class MainFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+      val  mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         mainViewModel.allCustomerNames.observe(viewLifecycleOwner, Observer { customerNames ->
             // Update the cached copy of the words in the adapter.
             if (customerNames.size > 1) {
@@ -101,40 +93,55 @@ class MainFragment : Fragment() {
                 np_customers.displayedValues = customerNames.toTypedArray()
             }
         })
+        bt_add.setOnClickListener {
+            bt_beginTime.isEnabled
+            bt_endTime.isEnabled
+//            var jobPerformance = JobPerformance()
+//            jobPerformance.customerName=np_customers.toString()
+//            jobPerformance.pause=np_pause_minutes
+//            jobPerformance.beginTime=bt_beginTime[bt_beginTime?.get]
+//            jobPerformance.endTime=0
+
+
+
+
+
+
+            view?.findNavController()?.navigate(R.id.action_mainFragment_to_overviewFragment)
+
+        }
     }
 
     private fun showBeginTime() {
-        val t3 = Calendar.getInstance()
-        beginTimeInHours = t3.get(Calendar.HOUR_OF_DAY)
-        beginTimeInMinutes = t3.get(Calendar.MINUTE)
-        val result = beginTimeInHours.toString() + ":" + beginTimeInMinutes.toString()
-        bt_beginTime.text = result
+        beginTime = System.currentTimeMillis()
+        bt_beginTime.text = SimpleDateFormat(" EE dd-MM-yyyy'"+" \n 'HH:mm")
+            .format(beginTime).toString()
     }
 
     fun showEndTime() {
 
-        val t4 = Calendar.getInstance()
-        endTimeInHours = t4.get(Calendar.HOUR_OF_DAY)
-        endTimeInMinutes = t4.get(Calendar.MINUTE)
-        val result = endTimeInHours.toString() + ":" + endTimeInMinutes.toString()
-        bt_endTime.text = result
+        endTime = System.currentTimeMillis()
+        bt_endTime.text = SimpleDateFormat(" EE dd-MM-yyyy'"+" \n 'HH:mm")
+            .format(endTime).toString()
 
     }
-    fun calculateResult() {
+    fun calculateResult():String {
         pauseHours = np_pause_hours.value
         pauseMinutes = np_pause_minutes.value
-        val pauzeTotaal = pauseHours * 60 + pauseMinutes
-        var timeWorked =
-            ((endTimeInHours * 60) + (endTimeInMinutes)) - ((beginTimeInHours * 60) + (beginTimeInMinutes)) - pauzeTotaal
-        var timeWorkedInHours: Int = timeWorked / 60
-        var timeWorkedInMinutes: Int = timeWorked - timeWorkedInHours * 60
-        var result: String =
+      val pauzeTotaal = (pauseHours * 60 + pauseMinutes)*60000
+       var timeWorked =(endTime-beginTime)
+          //  ((endTimeInHours * 60) + (endTimeInMinutes)) - ((beginTimeInHours * 60) + (beginTimeInMinutes)) - pauzeTotaal
+        var timeWorkedInHours  = timeWorked / 3600000
+        var timeWorkedInMinutes = timeWorked/ 60000
+       var result: String =
             timeWorkedInHours.toString() + " u  " + timeWorkedInMinutes.toString() + " min."
-        bt_add.text = result
+ //       bt_add.text = result
+        return result
+
     }
-    companion object {
-        const val EXTRA_REPLY = "com.example.android.wordlistsql.REPLY"
-    }
+//    companion object {
+//        const val EXTRA_REPLY = "com.example.android.wordlistsql.REPLY"
+//    }
 }
 
 

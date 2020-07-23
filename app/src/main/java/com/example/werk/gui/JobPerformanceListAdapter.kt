@@ -30,7 +30,7 @@ class JobPerformanceListAdapter(private val jobPerformanceList: ArrayList<JobPer
 
         val dateFormat = SimpleDateFormat("HH:mm", Locale.FRANCE)
 
-        holder.textView1.text = currentJP.customerId.toString()
+//        holder.textView1.text = currentJP.customerId.toString()
         holder.textView4.text = currentJP.pause.toString()
 
 

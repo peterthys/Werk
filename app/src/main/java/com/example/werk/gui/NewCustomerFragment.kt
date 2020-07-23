@@ -12,9 +12,7 @@ import com.example.werk.klassen.Customer
 import com.example.werk.viewmodels.NewCustomerViewModel
 import kotlinx.android.synthetic.main.fragment_new_customer.*
 
-/**
- * A simple [Fragment] subclass.
- */
+
 class NewCustomerFragment : Fragment() {
 
 
@@ -25,12 +23,16 @@ class NewCustomerFragment : Fragment() {
     ): View? {
         val v = inflater.inflate(R.layout.fragment_new_customer, container, false)
         return v
+
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         val viewModel =  ViewModelProvider(this).get(NewCustomerViewModel::class.java)
+
+
 
         bt_add.setOnClickListener {
             if (checkCustomer()) {
@@ -43,7 +45,7 @@ class NewCustomerFragment : Fragment() {
                 customer.customerAdress1 = et_adress1.text.toString()
                 customer.customerAdress2 = et_adress2.text.toString()
                 customer.customerBTWnr = et_btw.text.toString()
-                customer.customerInfo = et_info.text.toString()
+          customer.customerInfo = et_info.text.toString()
 
                 // 2. NewCustomerViewModel.saveCustomer(...)
                 viewModel.saveCustomer(customer)
@@ -64,4 +66,5 @@ class NewCustomerFragment : Fragment() {
 
         return true
     }
+
 }
