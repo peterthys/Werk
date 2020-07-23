@@ -8,32 +8,35 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.werk.MainFragment"
+        android:name="com.example.werk.gui.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_overviewFragment"
-            app:destination="@id/overviewFragment" />
+            app:destination="@id/jobPerformanceOverviewFragment" />
         <action
             android:id="@+id/action_mainFragment_to_newCustomerFragment"
             app:destination="@id/newCustomerFragment" />
         <action
             android:id="@+id/action_mainFragment_to_customerOverviewFragment"
             app:destination="@id/customerOverviewFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_jobPerformanceOverviewFragment"
+            app:destination="@id/jobPerformanceOverviewFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/overviewFragment"
-        android:name="com.example.werk.OverviewFragment"
-        android:label="fragment_overview"
-        tools:layout="@layout/fragment_overview" >
+        android:id="@+id/jobPerformanceOverviewFragment"
+        android:name="com.example.werk.gui.JobPerformanceOverviewFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_job_performance_overview" >
         <action
             android:id="@+id/action_overviewFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/newCustomerFragment"
-        android:name="com.example.werk.NewCustomerFragment"
+        android:name="com.example.werk.gui.NewCustomerFragment"
         android:label="fragment_customer"
         tools:layout="@layout/fragment_new_customer">
     <action
@@ -43,7 +46,14 @@
 
     <fragment
         android:id="@+id/customerOverviewFragment"
-        android:name="com.example.werk.customerOverviewFragment"
+        android:name="com.example.werk.gui.CustomerOverviewFragment"
         android:label="fragment_customer_overview"
-        tools:layout="@layout/fragment_customer_overview" />
+        tools:layout="@layout/fragment_customer_overview" >
+        <action
+            android:id="@+id/action_customerOverviewFragment_to_newCustomerFragment"
+            app:destination="@id/newCustomerFragment" />
+        <action
+            android:id="@+id/action_customerOverviewFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
 </navigation>
