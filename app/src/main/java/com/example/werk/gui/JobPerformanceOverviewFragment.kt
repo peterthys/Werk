@@ -9,8 +9,8 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.werk.R
-import com.example.werk.klassen.Customer
-import com.example.werk.klassen.JobPerformance
+import com.example.werk.database.Customer
+import com.example.werk.database.JobPerformance
 import kotlinx.android.synthetic.main.fragment_job_performance_overview.*
 import java.util.*
 

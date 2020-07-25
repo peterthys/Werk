@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.werk.R
-import com.example.werk.klassen.Customer
+import com.example.werk.database.Customer
 import kotlinx.android.synthetic.main.ticket_customers_overview.view.*
 
 class CustomerListAdapter internal constructor(context: Context) : RecyclerView.Adapter<CustomerListAdapter.CustomerViewHolder>() {

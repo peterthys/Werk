@@ -1,6 +1,7 @@
 package com.example.werk.klassen
 
 import androidx.lifecycle.LiveData
+import com.example.werk.database.Customer
 import com.example.werk.database.CustomerDao
 
 // Declares the DAO as a private property in the constructor. Pass in the DAO

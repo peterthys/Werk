@@ -1,4 +1,4 @@
-package com.example.werk.klassen
+package com.example.werk.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

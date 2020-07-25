@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.werk.R
-import com.example.werk.klassen.JobPerformance
+import com.example.werk.database.JobPerformance
 import kotlinx.android.synthetic.main.ticket_job_performances_overview.view.*
 import java.text.SimpleDateFormat
 import java.util.*

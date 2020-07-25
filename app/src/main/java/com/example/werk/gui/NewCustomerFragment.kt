@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.werk.R
-import com.example.werk.klassen.Customer
+import com.example.werk.database.Customer
 import com.example.werk.viewmodels.NewCustomerViewModel
 import kotlinx.android.synthetic.main.fragment_new_customer.*
 

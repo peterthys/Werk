@@ -7,7 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
 import com.example.werk.database.WerkDatabase
-import com.example.werk.klassen.Customer
+import com.example.werk.database.Customer
 import com.example.werk.klassen.CustomerRepository
 import java.util.*
 

@@ -5,7 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.werk.database.WerkDatabase
-import com.example.werk.klassen.Customer
+import com.example.werk.database.Customer
 import com.example.werk.klassen.CustomerRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
