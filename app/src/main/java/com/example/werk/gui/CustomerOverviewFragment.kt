@@ -48,7 +48,7 @@ class CustomerOverviewFragment : Fragment() {
 
         customerViewModel = ViewModelProvider(this).get(CustomerViewModel::class.java)
         customerViewModel.allCustomers.observe(viewLifecycleOwner, Observer { customers ->
-            // Update the cached copy of the words in the adapter.
+
             customers?.let { adapter.setCustomers(it) }
         })
 

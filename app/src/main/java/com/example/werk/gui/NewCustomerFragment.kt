@@ -16,7 +16,6 @@ import kotlinx.android.synthetic.main.fragment_new_customer.*
 class NewCustomerFragment : Fragment() {
 
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,7 +29,7 @@ class NewCustomerFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val viewModel =  ViewModelProvider(this).get(NewCustomerViewModel::class.java)
+        val viewModel = ViewModelProvider(this).get(NewCustomerViewModel::class.java)
 
 
 
@@ -45,7 +44,7 @@ class NewCustomerFragment : Fragment() {
                 customer.customerAdress1 = et_adress1.text.toString()
                 customer.customerAdress2 = et_adress2.text.toString()
                 customer.customerBTWnr = et_btw.text.toString()
-          customer.customerInfo = et_info.text.toString()
+                customer.customerInfo = et_info.text.toString()
 
                 // 2. NewCustomerViewModel.saveCustomer(...)
                 viewModel.saveCustomer(customer)

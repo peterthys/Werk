@@ -34,11 +34,6 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       //var customersArray= db.customerDao().getAllNames()
-
-
-//        val arrayAdapter =
-//            ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, customersArray)
 
         bt_new_customer.setOnClickListener {
             view.findNavController().navigate(R.id.action_mainFragment_to_newCustomerFragment)
@@ -58,9 +53,6 @@ class MainFragment : Fragment() {
             showEndTime()
             calculateResult()
         }
-//        bt_add.setOnClickListener{
-//            calculateResult()
-//        }
 
 
         val pickerCustomers = np_customers
@@ -129,13 +121,13 @@ class MainFragment : Fragment() {
         pauseHours = np_pause_hours.value
         pauseMinutes = np_pause_minutes.value
       val pauzeTotaal = (pauseHours * 60 + pauseMinutes)*60000
-       var timeWorked =(endTime-beginTime)-pauzeTotaal
+       val timeWorked =(endTime-beginTime)-pauzeTotaal
           //  ((endTimeInHours * 60) + (endTimeInMinutes)) - ((beginTimeInHours * 60) + (beginTimeInMinutes)) - pauzeTotaal
-        var timeWorkedInHours  = timeWorked / 3600000
-        var timeWorkedInMinutes = timeWorked/ 60000
-       var result: String =
+        val timeWorkedInHours  = timeWorked / 3600000
+        val timeWorkedInMinutes = timeWorked/ 60000
+       val result: String =
             timeWorkedInHours.toString() + " u  " + timeWorkedInMinutes.toString() + " min."
-       bt_add.text = result
+
         return result
 
     }

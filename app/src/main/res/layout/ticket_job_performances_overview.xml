@@ -17,10 +17,10 @@
             android:id="@+id/tv_customer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="40dp"
             android:text="Customer"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.508"
+            app:layout_constraintHorizontal_bias="0.099"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,7 +43,7 @@
             android:layout_marginEnd="84dp"
             android:text="EndTime"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.475"
+            app:layout_constraintHorizontal_bias="0.306"
             app:layout_constraintStart_toEndOf="@+id/tv_startTime"
             app:layout_constraintTop_toBottomOf="@+id/tv_customer" />
 
@@ -51,10 +51,10 @@
             android:id="@+id/tv_pause"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="4dp"
             android:text="Pause"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.533"
+            app:layout_constraintHorizontal_bias="0.398"
             app:layout_constraintStart_toEndOf="@+id/tv_endTime"
             app:layout_constraintTop_toBottomOf="@+id/tv_customer" />
 
