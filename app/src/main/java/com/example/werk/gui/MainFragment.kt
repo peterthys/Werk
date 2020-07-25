@@ -129,13 +129,13 @@ class MainFragment : Fragment() {
         pauseHours = np_pause_hours.value
         pauseMinutes = np_pause_minutes.value
       val pauzeTotaal = (pauseHours * 60 + pauseMinutes)*60000
-       var timeWorked =(endTime-beginTime)
+       var timeWorked =(endTime-beginTime)-pauzeTotaal
           //  ((endTimeInHours * 60) + (endTimeInMinutes)) - ((beginTimeInHours * 60) + (beginTimeInMinutes)) - pauzeTotaal
         var timeWorkedInHours  = timeWorked / 3600000
         var timeWorkedInMinutes = timeWorked/ 60000
        var result: String =
             timeWorkedInHours.toString() + " u  " + timeWorkedInMinutes.toString() + " min."
- //       bt_add.text = result
+       bt_add.text = result
         return result
 
     }
