@@ -10,7 +10,7 @@ import kotlinx.coroutines.CoroutineScope
 
 @Database(
     entities = [JobPerformance::class, Customer::class],
-    version = 9,
+    version = 11,
     exportSchema = false
 )
 @TypeConverters(DatabaseConverters::class)

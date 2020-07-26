@@ -20,9 +20,4 @@ class CustomerViewModel(application: Application) : AndroidViewModel(application
         repository = CustomerRepository(customerDao)
         allCustomers = repository.allCustomers
     }
-
-    fun insertCustomer(customer: Customer) = viewModelScope.launch(Dispatchers.IO) {
-        repository.insertCustomer(customer )
-    }
-
 }

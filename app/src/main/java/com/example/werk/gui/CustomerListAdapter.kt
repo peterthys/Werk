@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.ticket_customers_overview.view.*
 class CustomerListAdapter internal constructor(context: Context) : RecyclerView.Adapter<CustomerListAdapter.CustomerViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
-    private var customers = emptyList<Customer>() // Cached copy of words
+    private var customers = emptyList<Customer>()
 
     inner class CustomerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textView1: TextView = itemView.tv_customerName

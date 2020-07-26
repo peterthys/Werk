@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.werk.R
+import com.example.werk.database.JobPerformance
 import com.example.werk.viewmodels.MainViewModel
 import kotlinx.android.synthetic.main.fragment_main.*
 import java.text.SimpleDateFormat
@@ -20,8 +21,6 @@ class MainFragment : Fragment() {
     var endTime = 0L
     var pauseHours = 0
     var pauseMinutes = 0
-
-
 
 
     override fun onCreateView(
@@ -77,7 +76,7 @@ class MainFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-      val  mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        val mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         mainViewModel.allCustomerNames.observe(viewLifecycleOwner, Observer { customerNames ->
             // Update the cached copy of the words in the adapter.
             if (customerNames.size > 1) {
@@ -88,17 +87,18 @@ class MainFragment : Fragment() {
         bt_add.setOnClickListener {
             bt_beginTime.isEnabled
             bt_endTime.isEnabled
-//            var jobPerformance = JobPerformance()
-//            jobPerformance.customerName=np_customers.toString()
-//            jobPerformance.pause=np_pause_minutes
-//            jobPerformance.beginTime=bt_beginTime[bt_beginTime?.get]
-//            jobPerformance.endTime=0
 
+            val customerIndex = np_customers.value
+            val customerName = ""
+            
+            val jobPerformance = JobPerformance(
+                0,
+                customerName,
+                beginTime,
+                endTime,
+                pauseHours)
 
-
-
-
-
+            mainViewModel.saveJobPerformance(jobPerformance)
             view?.findNavController()?.navigate(R.id.action_mainFragment_to_overviewFragment)
 
         }
@@ -106,26 +106,27 @@ class MainFragment : Fragment() {
 
     private fun showBeginTime() {
         beginTime = System.currentTimeMillis()
-        bt_beginTime.text = SimpleDateFormat(" EE dd-MM-yyyy'"+" \n 'HH:mm")
+        bt_beginTime.text = SimpleDateFormat(" EE dd-MM-yyyy'" + " \n 'HH:mm")
             .format(beginTime).toString()
     }
 
     fun showEndTime() {
 
         endTime = System.currentTimeMillis()
-        bt_endTime.text = SimpleDateFormat(" EE dd-MM-yyyy'"+" \n 'HH:mm")
+        bt_endTime.text = SimpleDateFormat(" EE dd-MM-yyyy'" + " \n 'HH:mm")
             .format(endTime).toString()
 
     }
-    fun calculateResult():String {
+
+    fun calculateResult(): String {
         pauseHours = np_pause_hours.value
         pauseMinutes = np_pause_minutes.value
-      val pauzeTotaal = (pauseHours * 60 + pauseMinutes)*60000
-       val timeWorked =(endTime-beginTime)-pauzeTotaal
-          //  ((endTimeInHours * 60) + (endTimeInMinutes)) - ((beginTimeInHours * 60) + (beginTimeInMinutes)) - pauzeTotaal
-        val timeWorkedInHours  = timeWorked / 3600000
-        val timeWorkedInMinutes = timeWorked/ 60000
-       val result: String =
+        val pauzeTotaal = (pauseHours * 60 + pauseMinutes) * 60000
+        val timeWorked = (endTime - beginTime) - pauzeTotaal
+        //  ((endTimeInHours * 60) + (endTimeInMinutes)) - ((beginTimeInHours * 60) + (beginTimeInMinutes)) - pauzeTotaal
+        val timeWorkedInHours = timeWorked / 3600000
+        val timeWorkedInMinutes = timeWorked / 60000
+        val result: String =
             timeWorkedInHours.toString() + " u  " + timeWorkedInMinutes.toString() + " min."
 
         return result
