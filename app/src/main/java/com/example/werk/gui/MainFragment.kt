@@ -21,6 +21,7 @@ class MainFragment : Fragment() {
     var endTime = 0L
     var pauseHours = 0
     var pauseMinutes = 0
+    var pause : Int = 0
 
 
     override fun onCreateView(
@@ -85,21 +86,23 @@ class MainFragment : Fragment() {
             }
         })
         bt_add.setOnClickListener {
+            calculateResult()
             bt_beginTime.isEnabled
             bt_endTime.isEnabled
 
             val customerIndex = np_customers.value
             val customerName = ""
-            
+
             val jobPerformance = JobPerformance(
                 0,
                 customerName,
                 beginTime,
                 endTime,
-                pauseHours)
+                pause)
 
             mainViewModel.saveJobPerformance(jobPerformance)
             view?.findNavController()?.navigate(R.id.action_mainFragment_to_overviewFragment)
+
 
         }
     }
@@ -121,8 +124,8 @@ class MainFragment : Fragment() {
     fun calculateResult(): String {
         pauseHours = np_pause_hours.value
         pauseMinutes = np_pause_minutes.value
-        val pauzeTotaal = (pauseHours * 60 + pauseMinutes) * 60000
-        val timeWorked = (endTime - beginTime) - pauzeTotaal
+        pause = (pauseHours*60 + pauseMinutes)*60000
+        val timeWorked = (endTime - beginTime) - pause
         //  ((endTimeInHours * 60) + (endTimeInMinutes)) - ((beginTimeInHours * 60) + (beginTimeInMinutes)) - pauzeTotaal
         val timeWorkedInHours = timeWorked / 3600000
         val timeWorkedInMinutes = timeWorked / 60000
