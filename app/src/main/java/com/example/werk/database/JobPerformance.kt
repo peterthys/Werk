@@ -18,9 +18,11 @@ data class JobPerformance(
     var pause: Int
 ) {
 
-    fun calculateResult() : Long? {
-        if (beginTime == null || beginTime!! <= 0) return 0
-        if (endTime == null || endTime!! <= 0) return 0
-        return endTime!! - beginTime!! - pause
+    fun calculateResult(): String? {
+        if (beginTime == null) return "0"
+        if (endTime == null) return "0"
+        val totalHours = (endTime!! - beginTime!! - pause)/3600000
+        val totalMinutes = (endTime!! - beginTime!! - pause)/60000-(totalHours*60)
+        return " ${totalHours} hour  ${totalMinutes} min."
     }
 }

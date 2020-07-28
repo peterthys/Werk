@@ -36,14 +36,17 @@ class JobPerformanceListAdapter internal constructor(context: Context) :
         val dateFormat = SimpleDateFormat(" EE dd-MM-yyyy'" + " \n 'HH:mm")
 
         val currentJP = jobPerformances[position]
+
         val pauseToHours = currentJP.pause / 3600000
         val pauseToMinutes = currentJP.pause/60000 - pauseToHours*60
         val pauseToString = "$pauseToHours hour $pauseToMinutes min."
+
+
         holder.textView1.text = currentJP.customerName
         holder.textView2.text = dateFormat.format(currentJP.beginTime)
         holder.textView3.text = dateFormat.format(currentJP.endTime)
         holder.textView4.text = pauseToString
-        holder.textView5.text = dateFormat.format(currentJP.calculateResult())
+        holder.textView5.text = currentJP.calculateResult()
     }
 
     internal fun setJobPerformances(jobPerformances: List<JobPerformance>) {
