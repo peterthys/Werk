@@ -24,4 +24,8 @@ data class Customer(
     var customerInfo: String = "",
     @ColumnInfo(name = "customerBTWnr")
     var customerBTWnr: String = ""
-) 
+) {
+    override fun toString(): String {
+        return customerName
+    }
+}

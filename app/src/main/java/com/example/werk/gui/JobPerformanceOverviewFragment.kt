@@ -11,6 +11,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.werk.R
+import com.example.werk.database.JobPerformance
 import com.example.werk.viewmodels.JobPerformanceViewModel
 import kotlinx.android.synthetic.main.fragment_job_performance_overview.*
 
@@ -37,6 +38,23 @@ class JobPerformanceOverviewFragment : Fragment() {
 
         recyclerView = recyclerview_jobPerformance
         adapter = JobPerformanceListAdapter(requireContext())
+        adapter.setJobPerformanceListener(
+            object : JobPerformanceListAdapter.JobPerformanceListener {
+                override fun onDeleteJobPerformance(jobPerformance: JobPerformance) {
+                    jobPerformanceViewModel.deleteJobPerformance(jobPerformance)
+                }
+
+                override fun onUpdateJobPerformance(jobPerformance: JobPerformance) {
+                    //
+                }
+
+                override fun onSelected(jobPerformance: JobPerformance) {
+                    // show floating action buttons FAB
+                    // jobPerformanceViewModel.setSelectedJobPerformance()
+
+                }
+            })
+
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context)
 
@@ -54,5 +72,21 @@ class JobPerformanceOverviewFragment : Fragment() {
             Observer { jobPerformances ->
                 jobPerformances?.let { adapter.setJobPerformances(it) }
             })
+//        val button = findViewById<Button>(R.id.btn_delete)
+//        button.setOnClickListener {
+//            val replyIntent = Intent()
+//            if (TextUtils.isEmpty(editWordView.text)) {
+//                setResult(Activity.RESULT_CANCELED, replyIntent)
+//            } else {
+//                 val word = editWordView.text.toString()
+//                replyIntent.putExtra(EXTRA_REPLY, word)
+//               setResult(Activity.RESULT_OK, replyIntent)
+//            }
+//            finish()
+//        }
+    }
+
+    companion object {
+        const val EXTRA_REPLY = "com.example.android.wordlistsql.REPLY"
     }
 }

@@ -59,8 +59,7 @@ class MainFragment : Fragment() {
         if (pickerCustomers != null) {
             pickerCustomers.minValue = 0
             pickerCustomers.wrapSelectorWheel = true
-//            pickerCustomers.maxValue = customersArray.size - 1
-//            pickerCustomers.displayedValues = customersArray
+
         }
         val pickerHours = np_pause_hours
         pickerHours.minValue = 0
@@ -91,7 +90,9 @@ class MainFragment : Fragment() {
             bt_endTime.isEnabled
 
             val customerIndex = np_customers.value
-            val customerName = ""
+            val customerName = java.lang.String.valueOf(np_customers.getValue())
+
+
 
             val jobPerformance = JobPerformance(
                 0,

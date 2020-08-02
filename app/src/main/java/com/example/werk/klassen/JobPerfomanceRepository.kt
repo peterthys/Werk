@@ -18,6 +18,9 @@ class JobPerfomanceRepository(
     suspend fun insertJobPerformance(jobPerformance: JobPerformance) {
         jobPerformanceDao.insert(jobPerformance)
     }
+    suspend fun deleteJobPerformance(jobPerformance: JobPerformance) {
+        jobPerformanceDao.deleteJobPerformance(jobPerformance)
+    }
 
 
 }

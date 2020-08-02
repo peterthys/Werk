@@ -6,9 +6,9 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
-import com.example.werk.database.WerkDatabase
 import com.example.werk.database.Customer
 import com.example.werk.database.JobPerformance
+import com.example.werk.database.WerkDatabase
 import com.example.werk.klassen.CustomerRepository
 import com.example.werk.klassen.JobPerfomanceRepository
 import kotlinx.coroutines.Dispatchers
@@ -40,6 +40,9 @@ class MainViewModel (application: Application) : AndroidViewModel(application) {
 
     fun saveJobPerformance(jobPerformance: JobPerformance) = viewModelScope.launch(Dispatchers.IO) {
         jobPerformanceRepository.insertJobPerformance(jobPerformance)
+    }
+    fun deleteJobPerformance(jobPerformance: JobPerformance) = viewModelScope.launch(Dispatchers.IO) {
+        jobPerformanceRepository.deleteJobPerformance(jobPerformance)
     }
 
 //    fun insertCustomer(customer: Customer) = viewModelScope.launch(Dispatchers.IO) {
