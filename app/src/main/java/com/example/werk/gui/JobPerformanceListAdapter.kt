@@ -16,18 +16,19 @@ import java.text.SimpleDateFormat
 class JobPerformanceListAdapter internal constructor(context: Context) :
     RecyclerView.Adapter<JobPerformanceListAdapter.JobPerformanceViewHolder>() {
 
-    public interface JobPerformanceListener {
-        fun onDeleteJobPerformance(jobPerformance : JobPerformance)
+    interface JobPerformanceListener {
+        fun onDeleteJobPerformance(jobPerformance: JobPerformance)
         fun onUpdateJobPerformance(jobPerformance: JobPerformance)
         fun onSelected(jobPerformance: JobPerformance)
     }
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var jobPerformances = emptyList<JobPerformance>()
-    private var jobPeformanceListener : JobPerformanceListener? = null
+    private var jobPeformanceListener: JobPerformanceListener? = null
 
     fun setJobPerformanceListener(jobPerformanceListener: JobPerformanceListener) {
-        this.jobPeformanceListener = jobPerformanceListener
+   //     this.jobPeformanceListener = jobPerformanceListener
+
     }
 
     inner class JobPerformanceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -56,7 +57,7 @@ class JobPerformanceListAdapter internal constructor(context: Context) :
         val currentJP = jobPerformances[position]
 
         val pauseToHours = currentJP.pause / 3600000
-        val pauseToMinutes = currentJP.pause/60000 - pauseToHours*60
+        val pauseToMinutes = currentJP.pause / 60000 - pauseToHours * 60
         val pauseToString = "$pauseToHours hour $pauseToMinutes min."
 
 
@@ -67,17 +68,18 @@ class JobPerformanceListAdapter internal constructor(context: Context) :
         holder.textView5.text = currentJP.calculateResult()
 
         holder.buttonDelete.setOnClickListener {
-            val jp : JobPerformance = jobPerformances.get(position)
+            val jp: JobPerformance = jobPerformances.get(position)
             jobPeformanceListener?.onDeleteJobPerformance(jp)
+
         }
         holder.buttonUpdate.setOnClickListener {
-            val jp : JobPerformance = jobPerformances.get(position)
+            val jp: JobPerformance = jobPerformances.get(position)
             jobPeformanceListener?.onUpdateJobPerformance(jp)
         }
 
         holder.holderView.setOnClickListener {
             //holder.holderView.setBackgroundColor(Color.GRAY)
-            val jp : JobPerformance = jobPerformances.get(position)
+            val jp: JobPerformance = jobPerformances.get(position)
             jobPeformanceListener?.onSelected(jp)
         }
     }

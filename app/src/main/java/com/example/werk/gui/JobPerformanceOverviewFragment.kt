@@ -42,6 +42,7 @@ class JobPerformanceOverviewFragment : Fragment() {
             object : JobPerformanceListAdapter.JobPerformanceListener {
                 override fun onDeleteJobPerformance(jobPerformance: JobPerformance) {
                     jobPerformanceViewModel.deleteJobPerformance(jobPerformance)
+
                 }
 
                 override fun onUpdateJobPerformance(jobPerformance: JobPerformance) {
@@ -72,18 +73,7 @@ class JobPerformanceOverviewFragment : Fragment() {
             Observer { jobPerformances ->
                 jobPerformances?.let { adapter.setJobPerformances(it) }
             })
-//        val button = findViewById<Button>(R.id.btn_delete)
-//        button.setOnClickListener {
-//            val replyIntent = Intent()
-//            if (TextUtils.isEmpty(editWordView.text)) {
-//                setResult(Activity.RESULT_CANCELED, replyIntent)
-//            } else {
-//                 val word = editWordView.text.toString()
-//                replyIntent.putExtra(EXTRA_REPLY, word)
-//               setResult(Activity.RESULT_OK, replyIntent)
-//            }
-//            finish()
-//        }
+
     }
 
     companion object {

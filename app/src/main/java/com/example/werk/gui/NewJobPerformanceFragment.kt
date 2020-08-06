@@ -11,11 +11,11 @@ import androidx.navigation.findNavController
 import com.example.werk.R
 import com.example.werk.database.JobPerformance
 import com.example.werk.viewmodels.MainViewModel
-import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.android.synthetic.main.fragment_new_job_performance.*
 import java.text.SimpleDateFormat
 
 
-class MainFragment : Fragment() {
+class NewJobPerformanceFragment : Fragment() {
 
     var beginTime = 0L
     var endTime = 0L
@@ -28,7 +28,7 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        return inflater.inflate(R.layout.fragment_new_job_performance, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,12 +36,12 @@ class MainFragment : Fragment() {
 
 
         bt_new_customer.setOnClickListener {
-            view.findNavController().navigate(R.id.action_mainFragment_to_newCustomerFragment)
+            view.findNavController().navigate(R.id.action_newJobPerformanceFragment_to_newCustomerFragment)
         }
 
         bt_overview.setOnClickListener {
             view.findNavController()
-                .navigate(R.id.action_mainFragment_to_jobPerformanceOverviewFragment)
+                .navigate(R.id.action_newJobPerformanceFragment_to_jobPerformanceOverviewFragment)
         }
 
         bt_beginTime.setOnClickListener {
@@ -102,7 +102,7 @@ class MainFragment : Fragment() {
                 pause)
 
             mainViewModel.saveJobPerformance(jobPerformance)
-            view?.findNavController()?.navigate(R.id.action_mainFragment_to_overviewFragment)
+            view?.findNavController()?.navigate(R.id.action_newJobPerformanceFragment_to_customerOverviewFragment)
 
 
         }

@@ -6,18 +6,25 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.werk.database.WerkDatabase
 import com.example.werk.database.Customer
+import com.example.werk.database.JobPerformance
 import com.example.werk.klassen.CustomerRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class CustomerViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val repository: CustomerRepository
+    private val customerRepository: CustomerRepository
     val allCustomers: LiveData<List<Customer>>
 
     init {
         val customerDao = WerkDatabase.getDatabase(application, viewModelScope).customerDao()
-        repository = CustomerRepository(customerDao)
-        allCustomers = repository.allCustomers
+        customerRepository = CustomerRepository(customerDao)
+        allCustomers = customerRepository.allCustomers
+    }
+    fun saveCustomer(customer: Customer) = viewModelScope.launch(Dispatchers.IO) {
+        (customerRepository.insertCustomer(customer))
+    }
+    fun deleteCustomer(customer: Customer) = viewModelScope.launch(Dispatchers.IO) {
+        (customerRepository.deleteCustomer(customer))
     }
 }

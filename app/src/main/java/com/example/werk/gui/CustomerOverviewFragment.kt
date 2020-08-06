@@ -11,6 +11,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.werk.R
+import com.example.werk.database.Customer
 import com.example.werk.viewmodels.CustomerViewModel
 import kotlinx.android.synthetic.main.fragment_customer_overview.*
 
@@ -34,12 +35,30 @@ class CustomerOverviewFragment : Fragment() {
 
         recyclerView = recyclerview_customer
         adapter = context.let { CustomerListAdapter(it!!) }
+        adapter.setCustomerListener(
+            object : CustomerListAdapter.CustomersListener {
+                override fun onDeleteCustomer(customer: Customer) {
+                    customerViewModel.deleteCustomer(customer)
+                }
+
+                override fun onUpdateCustomer(customer: Customer) {
+                    //
+                }
+
+                override fun onSelectedCustomer(customer: Customer) {
+                    TODO("Not yet implemented")
+
+                    // show floating action buttons FAB
+                    // jobPerformanceViewModel.setSelectedJobPerformance()
+
+                }
+            })
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context)
 
         fab.setOnClickListener {
             view.findNavController()
-                .navigate(R.id.action_customerOverviewFragment_to_mainFragment)
+                .navigate(R.id.action_customerOverviewFragment_to_newJobPerformanceFragment)
         }
     }
 

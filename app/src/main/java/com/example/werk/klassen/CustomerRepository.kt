@@ -21,5 +21,8 @@ class CustomerRepository(
     suspend fun saveCustomer(customer: Customer) {
         customerDao.save(customer)
     }
+    suspend fun deleteCustomer(customer: Customer){
+        customerDao.deleteCustomer(customer)
+    }
 
 }

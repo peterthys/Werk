@@ -3,26 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/welcomeFragment">
 
 
     <fragment
-        android:id="@+id/mainFragment"
-        android:name="com.example.werk.gui.MainFragment"
-        android:label="fragment_main"
-        tools:layout="@layout/fragment_main">
+        android:id="@+id/newJobPerformanceFragment"
+        android:name="com.example.werk.gui.NewJobPerformanceFragment"
+        android:label="fragment_new_job_performance"
+        tools:layout="@layout/fragment_new_job_performance">
         <action
-            android:id="@+id/action_mainFragment_to_overviewFragment"
+            android:id="@+id/action_newJobPerformanceFragment_to_jobPerformanceOverviewFragment"
             app:destination="@id/jobPerformanceOverviewFragment" />
         <action
-            android:id="@+id/action_mainFragment_to_newCustomerFragment"
+            android:id="@+id/action_newJobPerformanceFragment_to_newCustomerFragment"
             app:destination="@id/newCustomerFragment" />
         <action
-            android:id="@+id/action_mainFragment_to_customerOverviewFragment"
+            android:id="@+id/action_newJobPerformanceFragment_to_customerOverviewFragment"
             app:destination="@id/customerOverviewFragment" />
         <action
-            android:id="@+id/action_mainFragment_to_jobPerformanceOverviewFragment"
-            app:destination="@id/jobPerformanceOverviewFragment" />
+            android:id="@+id/action_newJobPerformanceFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
     </fragment>
 
     <fragment
@@ -32,10 +32,10 @@
         tools:layout="@layout/fragment_job_performance_overview" >
         <action
             android:id="@+id/action_overviewFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/newJobPerformanceFragment" />
         <action
             android:id="@+id/action_jobPerformanceOverviewFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/newJobPerformanceFragment" />
     </fragment>
     <fragment
         android:id="@+id/newCustomerFragment"
@@ -56,7 +56,26 @@
             android:id="@+id/action_customerOverviewFragment_to_newCustomerFragment"
             app:destination="@id/newCustomerFragment" />
         <action
-            android:id="@+id/action_customerOverviewFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            android:id="@+id/action_customerOverviewFragment_to_newJobPerformanceFragment"
+            app:destination="@id/newJobPerformanceFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.werk.gui.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_new_customer">
+        <action
+            android:id="@+id/action_welcome_to_customerOverviewFragment"
+            app:destination="@id/customerOverviewFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_customerOverviewFragment"
+            app:destination="@id/customerOverviewFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_newCustomerFragment"
+            app:destination="@id/newCustomerFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_jobPerformanceOverviewFragment"
+            app:destination="@id/jobPerformanceOverviewFragment" />
+    </fragment>
+
 </navigation>
