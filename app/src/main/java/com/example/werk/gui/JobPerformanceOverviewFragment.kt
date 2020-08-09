@@ -42,7 +42,6 @@ class JobPerformanceOverviewFragment : Fragment() {
             object : JobPerformanceListAdapter.JobPerformanceListener {
                 override fun onDeleteJobPerformance(jobPerformance: JobPerformance) {
                     jobPerformanceViewModel.deleteJobPerformance(jobPerformance)
-
                 }
 
                 override fun onUpdateJobPerformance(jobPerformance: JobPerformance) {
@@ -52,7 +51,6 @@ class JobPerformanceOverviewFragment : Fragment() {
                 override fun onSelected(jobPerformance: JobPerformance) {
                     // show floating action buttons FAB
                     // jobPerformanceViewModel.setSelectedJobPerformance()
-
                 }
             })
 

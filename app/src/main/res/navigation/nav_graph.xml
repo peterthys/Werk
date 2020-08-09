@@ -45,6 +45,9 @@
     <action
         android:id="@+id/action_customerFragment_to_customerOverviewFragment"
         app:destination="@id/customerOverviewFragment" />
+        <action
+            android:id="@+id/action_newCustomerFragment_to_newJobPerformanceFragment"
+            app:destination="@id/newJobPerformanceFragment" />
     </fragment>
 
     <fragment

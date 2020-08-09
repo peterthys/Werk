@@ -22,6 +22,7 @@ class CustomerOverviewFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: CustomerListAdapter
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,13 +47,17 @@ class CustomerOverviewFragment : Fragment() {
                 }
 
                 override fun onSelectedCustomer(customer: Customer) {
-                    TODO("Not yet implemented")
+                    customerViewModel.onSelectedCustomer(customer)
+                    view.findNavController()
+                        .navigate(R.id.action_customerOverviewFragment_to_newJobPerformanceFragment)
+
 
                     // show floating action buttons FAB
                     // jobPerformanceViewModel.setSelectedJobPerformance()
 
                 }
             })
+
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context)
 
@@ -65,9 +70,8 @@ class CustomerOverviewFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        customerViewModel = ViewModelProvider(this).get(CustomerViewModel::class.java)
+        customerViewModel = ViewModelProvider(requireActivity()).get(CustomerViewModel::class.java)
         customerViewModel.allCustomers.observe(viewLifecycleOwner, Observer { customers ->
-
             customers?.let { adapter.setCustomers(it) }
         })
 

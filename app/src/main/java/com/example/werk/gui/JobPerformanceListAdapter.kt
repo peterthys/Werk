@@ -27,8 +27,7 @@ class JobPerformanceListAdapter internal constructor(context: Context) :
     private var jobPeformanceListener: JobPerformanceListener? = null
 
     fun setJobPerformanceListener(jobPerformanceListener: JobPerformanceListener) {
-   //     this.jobPeformanceListener = jobPerformanceListener
-
+        this.jobPeformanceListener = jobPerformanceListener
     }
 
     inner class JobPerformanceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

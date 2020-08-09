@@ -10,19 +10,22 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.werk.R
 import com.example.werk.database.JobPerformance
-import com.example.werk.viewmodels.MainViewModel
+import com.example.werk.viewmodels.CustomerViewModel
+import com.example.werk.viewmodels.NewJobPerformanceViewModel
 import kotlinx.android.synthetic.main.fragment_new_job_performance.*
 import java.text.SimpleDateFormat
 
 
 class NewJobPerformanceFragment : Fragment() {
 
+    private lateinit var newJobPerformanceViewModel: NewJobPerformanceViewModel
+    private lateinit var customerViewModel: CustomerViewModel
+
     var beginTime = 0L
     var endTime = 0L
     var pauseHours = 0
     var pauseMinutes = 0
     var pause : Int = 0
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,12 +57,10 @@ class NewJobPerformanceFragment : Fragment() {
             calculateResult()
         }
 
-
         val pickerCustomers = np_customers
         if (pickerCustomers != null) {
             pickerCustomers.minValue = 0
             pickerCustomers.wrapSelectorWheel = true
-
         }
         val pickerHours = np_pause_hours
         pickerHours.minValue = 0
@@ -76,14 +77,17 @@ class NewJobPerformanceFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        mainViewModel.allCustomerNames.observe(viewLifecycleOwner, Observer { customerNames ->
+        newJobPerformanceViewModel = ViewModelProvider(requireActivity()).get(NewJobPerformanceViewModel::class.java)
+        newJobPerformanceViewModel.allCustomerNames.observe(viewLifecycleOwner, Observer { customerNames ->
             // Update the cached copy of the words in the adapter.
             if (customerNames.size > 1) {
                 np_customers.maxValue = customerNames?.size!! - 1
                 np_customers.displayedValues = customerNames.toTypedArray()
             }
         })
+        customerViewModel = ViewModelProvider(requireActivity()).get(CustomerViewModel::class.java)
+        tv_customer_name.text = customerViewModel.getChosenCustomer()!!.customerName
+
         bt_add.setOnClickListener {
             calculateResult()
             bt_beginTime.isEnabled
@@ -92,8 +96,6 @@ class NewJobPerformanceFragment : Fragment() {
             val customerIndex = np_customers.value
             val customerName = java.lang.String.valueOf(np_customers.getValue())
 
-
-
             val jobPerformance = JobPerformance(
                 0,
                 customerName,
@@ -101,9 +103,8 @@ class NewJobPerformanceFragment : Fragment() {
                 endTime,
                 pause)
 
-            mainViewModel.saveJobPerformance(jobPerformance)
-            view?.findNavController()?.navigate(R.id.action_newJobPerformanceFragment_to_customerOverviewFragment)
-
+            newJobPerformanceViewModel.saveJobPerformance(jobPerformance)
+            view?.findNavController()?.navigate(R.id.action_newJobPerformanceFragment_to_jobPerformanceOverviewFragment)
 
         }
     }

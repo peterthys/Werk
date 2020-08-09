@@ -15,7 +15,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.*
 
-class MainViewModel (application: Application) : AndroidViewModel(application) {
+class NewJobPerformanceViewModel (application: Application) : AndroidViewModel(application) {
 
     private val customerRepository: CustomerRepository
     private val jobPerformanceRepository: JobPerfomanceRepository

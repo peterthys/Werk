@@ -27,8 +27,7 @@ class CustomerListAdapter internal constructor(context: Context) :
     private var customerListener : CustomersListener? = null
 
     fun setCustomerListener(customerListener: CustomersListener) {
-        this.customerListener
-
+        this.customerListener = customerListener
     }
 
     inner class CustomerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
