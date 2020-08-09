@@ -94,8 +94,7 @@ class NewJobPerformanceFragment : Fragment() {
             bt_endTime.isEnabled
 
             val customerIndex = np_customers.value
-            val customerName = java.lang.String.valueOf(np_customers.getValue())
-
+            val customerName = tv_customer_name.text.toString()
             val jobPerformance = JobPerformance(
                 0,
                 customerName,

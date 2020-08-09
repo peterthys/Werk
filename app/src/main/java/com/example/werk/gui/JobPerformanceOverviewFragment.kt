@@ -74,7 +74,7 @@ class JobPerformanceOverviewFragment : Fragment() {
 
     }
 
-    companion object {
-        const val EXTRA_REPLY = "com.example.android.wordlistsql.REPLY"
-    }
+//    companion object {
+//        const val EXTRA_REPLY = "com.example.android.wordlistsql.REPLY"
+//    }
 }
