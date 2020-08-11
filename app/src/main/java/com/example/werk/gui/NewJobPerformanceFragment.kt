@@ -34,12 +34,22 @@ class NewJobPerformanceFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_new_job_performance, container, false)
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        btn_change_customer.setOnClickListener {
+            tv_customer_name.text=""
+            btn_change_customer.setVisibility(View.GONE)
+            bt_new_customer.setVisibility(View.VISIBLE)
+            btn_other_customer.setVisibility(View.VISIBLE)
+        }
 
         bt_new_customer.setOnClickListener {
             view.findNavController().navigate(R.id.action_newJobPerformanceFragment_to_newCustomerFragment)
+        }
+        btn_other_customer.setOnClickListener {
+            view.findNavController().navigate(R.id.action_newJobPerformanceFragment_to_customerOverviewFragment)
         }
 
         bt_overview.setOnClickListener {
@@ -57,20 +67,15 @@ class NewJobPerformanceFragment : Fragment() {
             calculateResult()
         }
 
-        val pickerCustomers = np_customers
-        if (pickerCustomers != null) {
-            pickerCustomers.minValue = 0
-            pickerCustomers.wrapSelectorWheel = true
-        }
         val pickerHours = np_pause_hours
-        pickerHours.minValue = 0
-        pickerHours.maxValue = 12
-        pickerHours.wrapSelectorWheel = true
-
         val pickerMinutes = np_pause_minutes
         pickerMinutes.minValue = 0
         pickerMinutes.maxValue = 60
         pickerMinutes.value = 30
+        pickerHours.minValue = 0
+        pickerHours.maxValue = 12
+        pickerHours.wrapSelectorWheel = true
+
         pickerMinutes.wrapSelectorWheel = true
     }
 
@@ -80,10 +85,10 @@ class NewJobPerformanceFragment : Fragment() {
         newJobPerformanceViewModel = ViewModelProvider(requireActivity()).get(NewJobPerformanceViewModel::class.java)
         newJobPerformanceViewModel.allCustomerNames.observe(viewLifecycleOwner, Observer { customerNames ->
             // Update the cached copy of the words in the adapter.
-            if (customerNames.size > 1) {
-                np_customers.maxValue = customerNames?.size!! - 1
-                np_customers.displayedValues = customerNames.toTypedArray()
-            }
+//            if (customerNames.size > 1) {
+//                np_customers.maxValue = customerNames?.size!! - 1
+//                np_customers.displayedValues = customerNames.toTypedArray()
+//            }
         })
         customerViewModel = ViewModelProvider(requireActivity()).get(CustomerViewModel::class.java)
         tv_customer_name.text = customerViewModel.getChosenCustomer()!!.customerName
@@ -93,7 +98,7 @@ class NewJobPerformanceFragment : Fragment() {
             bt_beginTime.isEnabled
             bt_endTime.isEnabled
 
-            val customerIndex = np_customers.value
+          //  val customerIndex = np_customers.value
             val customerName = tv_customer_name.text.toString()
             val jobPerformance = JobPerformance(
                 0,

@@ -5,29 +5,59 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="?attr/colorButtonNormal"
-    android:padding="5dp">
+    android:padding="10dp">
 
-    <NumberPicker
-        android:id="@+id/np_customers"
+    <TextView
+        android:id="@+id/tv_customer_name"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="68dp"
-        android:solidColor="@color/design_default_color_secondary"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="96dp"
+        android:background="@color/colorAccent"
+        android:backgroundTint="@color/colorAccent"
+        android:text="TextView"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/bt_new_customer"
-        android:layout_width="100dp"
-        android:text="New Customer"
+        android:id="@+id/btn_change_customer"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="4dp"
         android:backgroundTint="@color/colorAccent"
+        android:clickable="true"
+        android:text="change \n customer ?"
+        android:textAllCaps="false"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/btn_other_customer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="136dp"
+        android:layout_marginEnd="12dp"
+        android:backgroundTint="@color/colorAccent"
+        android:text="OTHER \n customer"
+        android:textAllCaps="false"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/bt_new_customer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="12dp"
+        android:backgroundTint="@color/colorAccent"
+        android:text="NEW \n Customer"
+        android:textAllCaps="false"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -116,6 +146,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginBottom="16dp"
         android:text="to overview"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -123,19 +154,20 @@
         android:id="@+id/bt_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="72dp"
+        android:layout_marginEnd="68dp"
         android:layout_marginBottom="16dp"
         android:text="Add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/tv_customer_name"
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="112dp"
+        android:text="your customer : "
+        android:textSize="10sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
