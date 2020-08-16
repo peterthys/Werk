@@ -47,11 +47,11 @@
         app:destination="@id/customerOverviewFragment" />
         <action
             android:id="@+id/action_newCustomerFragment_to_newJobPerformanceFragment"
-            app:destination="@id/newJobPerformanceFragment" />
+            app:destination="@id/newJobPerformanceFragment"/>
         <argument
-            android:name="cusomerId"
+            android:name="customerId"
             app:argType="integer"
-            android:defaultValue="-1" />
+            android:defaultValue="0" />
     </fragment>
 
     <fragment
@@ -65,9 +65,6 @@
         <action
             android:id="@+id/action_customerOverviewFragment_to_newJobPerformanceFragment"
             app:destination="@id/newJobPerformanceFragment" />
-        <action
-            android:id="@+id/action_customerOverviewFragment_to_newCustomerFragment2"
-            app:destination="@id/newCustomerFragment" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"

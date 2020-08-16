@@ -45,6 +45,9 @@ class CustomerOverviewFragment : Fragment() {
                 }
 
                 override fun onUpdateCustomer(customer: Customer) {
+                    val action = CustomerOverviewFragmentDirections
+                        .actionCustomerOverviewFragmentToNewCustomerFragment(customer.id)
+                    view.findNavController().navigate(action)
 
                 }
 

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -40,17 +41,19 @@ class NewJobPerformanceFragment : Fragment() {
         tv_selectEndTime.setVisibility(View.GONE)
         bt_endTime.setVisibility(View.GONE)
         btn_change_customer.setOnClickListener {
-            tv_customer_name.text="...."
+            tv_customer_name.text = "...."
             btn_change_customer.setVisibility(View.GONE)
             bt_new_customer.setVisibility(View.VISIBLE)
             btn_other_customer.setVisibility(View.VISIBLE)
         }
 
         bt_new_customer.setOnClickListener {
-            view.findNavController().navigate(R.id.action_newJobPerformanceFragment_to_newCustomerFragment)
+            view.findNavController()
+                .navigate(R.id.action_newJobPerformanceFragment_to_newCustomerFragment)
         }
         btn_other_customer.setOnClickListener {
-            view.findNavController().navigate(R.id.action_newJobPerformanceFragment_to_customerOverviewFragment)
+            view.findNavController()
+                .navigate(R.id.action_newJobPerformanceFragment_to_customerOverviewFragment)
         }
 
         bt_overview.setOnClickListener {
@@ -59,28 +62,51 @@ class NewJobPerformanceFragment : Fragment() {
         }
 
         bt_beginTime.setOnClickListener {
-            tv_selectBeginTime.setVisibility(View.GONE)
-            tv_selectEndTime.setVisibility(View.VISIBLE)
-            bt_endTime.setVisibility(View.VISIBLE)
-            bt_beginTime.setEnabled(false)
-            showBeginTime()
-        }
-        bt_endTime.setOnClickListener {
-            bt_endTime.setEnabled(false)
-            showEndTime()
-            calculateResult()
+//            if (tv_customer_name.text=="...."||tv_customer_name.text==null){
+//                Toast.makeText(view.getContext(),"First select or create a customer pls !",Toast.LENGTH_LONG).show()
+//           }
+//
+//            else
+            if (checkCustomerName()) {
+
+                tv_selectBeginTime.setVisibility(View.GONE)
+                tv_selectEndTime.setVisibility(View.VISIBLE)
+                bt_endTime.setVisibility(View.VISIBLE)
+                bt_beginTime.setEnabled(false)
+                showBeginTime()
+            }
+            bt_endTime.setOnClickListener {
+                bt_endTime.setEnabled(false)
+                showEndTime()
+                calculateResult()
+            }
+
+            val pickerHours = np_pause_hours
+            val pickerMinutes = np_pause_minutes
+            pickerMinutes.minValue = 0
+            pickerMinutes.maxValue = 60
+            pickerMinutes.value = 30
+            pickerHours.minValue = 0
+            pickerHours.maxValue = 12
+            pickerHours.wrapSelectorWheel = true
+
+            pickerMinutes.wrapSelectorWheel = true
+
+
+
         }
 
-        val pickerHours = np_pause_hours
-        val pickerMinutes = np_pause_minutes
-        pickerMinutes.minValue = 0
-        pickerMinutes.maxValue = 60
-        pickerMinutes.value = 30
-        pickerHours.minValue = 0
-        pickerHours.maxValue = 12
-        pickerHours.wrapSelectorWheel = true
+    }
+    fun checkCustomerName(): Boolean {
+        val name = tv_customer_name.text
+        if (tv_customer_name.text=="...."||tv_customer_name==null) {
+            bt_beginTime.error = "First select or create a customer pls !"
 
-        pickerMinutes.wrapSelectorWheel = true
+          Toast.makeText(view?.getContext(),"First select or create a customer pls !",Toast.LENGTH_LONG).show()
+            return false
+        }
+
+        return true
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -145,6 +171,7 @@ class NewJobPerformanceFragment : Fragment() {
         return result
 
     }
+
 //    companion object {
 //        const val EXTRA_REPLY = "com.example.android.wordlistsql.REPLY"
 //    }

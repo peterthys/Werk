@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.werk.R
 import com.example.werk.database.Customer
 import com.example.werk.viewmodels.NewCustomerViewModel
@@ -15,6 +16,7 @@ import kotlinx.android.synthetic.main.fragment_new_customer.*
 
 class NewCustomerFragment : Fragment() {
 
+    val args: NewCustomerFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,8 +24,6 @@ class NewCustomerFragment : Fragment() {
     ): View? {
         val v = inflater.inflate(R.layout.fragment_new_customer, container, false)
         return v
-
-
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -31,6 +31,11 @@ class NewCustomerFragment : Fragment() {
 
         val viewModel = ViewModelProvider(this).get(NewCustomerViewModel::class.java)
 
+        val id = args.customerId
+        // if id > 0 => update customer
+        //      zoek customer by id: viewModel.getCustomerById(id)
+        //      als customer gevonden: data invullen in textviews enz
+        // else => add customer
 
 
         bt_add.setOnClickListener {
