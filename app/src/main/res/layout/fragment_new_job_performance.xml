@@ -14,7 +14,7 @@
         android:layout_marginStart="112dp"
         android:layout_marginTop="96dp"
         android:background="@color/colorAccent"
-        android:backgroundTint="@color/colorAccent"
+        android:backgroundTint="?android:attr/colorBackground"
         android:text="TextView"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="92dp"
         android:layout_marginEnd="4dp"
-        android:backgroundTint="@color/colorAccent"
+        android:backgroundTint="?attr/colorButtonNormal"
         android:clickable="true"
         android:text="change \n customer ?"
         android:textAllCaps="false"
@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="136dp"
         android:layout_marginEnd="12dp"
-        android:backgroundTint="@color/colorAccent"
+        android:backgroundTint="?attr/colorButtonNormal"
         android:text="OTHER \n customer"
         android:textAllCaps="false"
         android:visibility="invisible"
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:layout_marginEnd="12dp"
-        android:backgroundTint="@color/colorAccent"
+        android:backgroundTint="?attr/colorButtonNormal"
         android:text="NEW \n Customer"
         android:textAllCaps="false"
         android:visibility="invisible"
@@ -64,8 +64,8 @@
         android:id="@+id/bt_beginTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="96dp"
         android:backgroundTint="#FF0"
         android:hint="BeginTime : "
         app:layout_constraintStart_toStartOf="parent"
@@ -75,13 +75,12 @@
         android:id="@+id/bt_endTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="0dp"
         android:backgroundTint="#F8F803"
         android:hint="EndTime : "
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.558"
-        app:layout_constraintStart_toEndOf="@+id/bt_beginTime"
-        app:layout_constraintTop_toBottomOf="@+id/bt_new_customer" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_beginTime" />
 
     <TextView
         android:id="@+id/tv_pause_hour"
@@ -99,45 +98,43 @@
         android:id="@+id/tv_pause_minutes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="102dp"
         android:background="#5F00"
         android:text="hour "
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.355"
-        app:layout_constraintStart_toEndOf="@+id/tv_pause_hour"
+        app:layout_constraintStart_toEndOf="@+id/np_pause_hours"
         app:layout_constraintTop_toBottomOf="@+id/bt_beginTime" />
 
     <NumberPicker
         android:id="@+id/np_pause_hours"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="72dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="94dp"
         android:solidColor="#5F00"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_pause_hour"
         app:layout_constraintTop_toBottomOf="@+id/bt_beginTime" />
 
     <NumberPicker
         android:id="@+id/np_pause_minutes"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:layout_marginTop="64dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="93dp"
         android:solidColor="#5F00"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.238"
         app:layout_constraintStart_toEndOf="@+id/tv_pause_minutes"
-        app:layout_constraintTop_toBottomOf="@+id/bt_endTime" />
+        app:layout_constraintTop_toBottomOf="@+id/bt_beginTime" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="104dp"
-        android:layout_marginEnd="28dp"
         android:background="#5F00"
         android:text="minutes"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt_endTime" />
+        app:layout_constraintStart_toEndOf="@+id/np_pause_minutes"
+        app:layout_constraintTop_toBottomOf="@+id/bt_beginTime" />
 
     <Button
         android:id="@+id/bt_overview"
@@ -170,6 +167,28 @@
         android:textSize="10sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_selectBeginTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="88dp"
+        android:text="select begintime :"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_customer_name" />
+
+    <TextView
+        android:id="@+id/tv_selectEndTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="25dp"
+        android:text="select endtime :"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_beginTime" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

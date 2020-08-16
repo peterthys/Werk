@@ -37,4 +37,7 @@ class CustomerViewModel(application: Application) : AndroidViewModel(application
     fun onSelectedCustomer(customer: Customer) {
         chosenCustomer = customer
     }
+    fun updateCustomer(customer: Customer){
+
+    }
 }

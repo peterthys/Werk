@@ -37,9 +37,10 @@ class NewJobPerformanceFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        tv_selectEndTime.setVisibility(View.GONE)
+        bt_endTime.setVisibility(View.GONE)
         btn_change_customer.setOnClickListener {
-            tv_customer_name.text=""
+            tv_customer_name.text="...."
             btn_change_customer.setVisibility(View.GONE)
             bt_new_customer.setVisibility(View.VISIBLE)
             btn_other_customer.setVisibility(View.VISIBLE)
@@ -58,6 +59,9 @@ class NewJobPerformanceFragment : Fragment() {
         }
 
         bt_beginTime.setOnClickListener {
+            tv_selectBeginTime.setVisibility(View.GONE)
+            tv_selectEndTime.setVisibility(View.VISIBLE)
+            bt_endTime.setVisibility(View.VISIBLE)
             bt_beginTime.setEnabled(false)
             showBeginTime()
         }

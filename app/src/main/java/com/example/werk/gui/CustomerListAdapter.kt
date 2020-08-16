@@ -58,18 +58,36 @@ class CustomerListAdapter internal constructor(context: Context) :
         holder.textView1.text = currentJP.customerName
         holder.textView2.text = currentJP.customerEmail
         holder.textView3.text = currentJP.customerPhone
+        if (currentJP.customerAdress1 == null)
+
+            holder.textView4.text =null
+        else
         holder.textView4.text = currentJP.customerAdress1
+        if (currentJP.customerAdress2 == null)
+          //  holder.textView5.setVisibility(View.GONE)
+            holder.textView5.text =null
+        else
         holder.textView5.text = currentJP.customerAdress2
+        if(currentJP.customerDescription == null)
+            holder.textView6.text = null
+        else
         holder.textView6.text = currentJP.customerDescription
+        if(currentJP.customerBTWnr == null)
+            holder.textView7.text = null
+        else
         holder.textView7.text = currentJP.customerBTWnr
+        if(currentJP.customerInfo == null)
+            holder.textView8.text = null
         holder.textView8.text = currentJP.customerInfo
 
         holder.buttonDelete.setOnClickListener {
             val cus : Customer = customers.get(position)
+            
             customerListener?.onDeleteCustomer(cus)
         }
         holder.buttonUpdate.setOnClickListener {
             val cus : Customer = customers.get(position)
+
             customerListener?.onUpdateCustomer(cus)
         }
         holder.holderView.setOnClickListener {

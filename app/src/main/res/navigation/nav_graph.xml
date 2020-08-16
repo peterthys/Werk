@@ -48,6 +48,10 @@
         <action
             android:id="@+id/action_newCustomerFragment_to_newJobPerformanceFragment"
             app:destination="@id/newJobPerformanceFragment" />
+        <argument
+            android:name="cusomerId"
+            app:argType="integer"
+            android:defaultValue="-1" />
     </fragment>
 
     <fragment
@@ -61,12 +65,15 @@
         <action
             android:id="@+id/action_customerOverviewFragment_to_newJobPerformanceFragment"
             app:destination="@id/newJobPerformanceFragment" />
+        <action
+            android:id="@+id/action_customerOverviewFragment_to_newCustomerFragment2"
+            app:destination="@id/newCustomerFragment" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.example.werk.gui.WelcomeFragment"
         android:label="fragment_welcome"
-        tools:layout="@layout/fragment_new_customer">
+        tools:layout="@layout/fragment_welcome">
         <action
             android:id="@+id/action_welcome_to_customerOverviewFragment"
             app:destination="@id/customerOverviewFragment" />

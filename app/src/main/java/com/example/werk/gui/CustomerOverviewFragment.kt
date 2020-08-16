@@ -13,12 +13,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.werk.R
 import com.example.werk.database.Customer
 import com.example.werk.viewmodels.CustomerViewModel
+import com.example.werk.viewmodels.NewCustomerViewModel
 import kotlinx.android.synthetic.main.fragment_customer_overview.*
 
 
 class CustomerOverviewFragment : Fragment() {
 
     private lateinit var customerViewModel: CustomerViewModel
+    private lateinit var newCustomerViewModel: NewCustomerViewModel
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: CustomerListAdapter
 
@@ -43,17 +45,13 @@ class CustomerOverviewFragment : Fragment() {
                 }
 
                 override fun onUpdateCustomer(customer: Customer) {
-                    //
+
                 }
 
                 override fun onSelectedCustomer(customer: Customer) {
                     customerViewModel.onSelectedCustomer(customer)
                     view.findNavController()
                         .navigate(R.id.action_customerOverviewFragment_to_newJobPerformanceFragment)
-
-
-                    // show floating action buttons FAB
-                    // jobPerformanceViewModel.setSelectedJobPerformance()
 
                 }
             })

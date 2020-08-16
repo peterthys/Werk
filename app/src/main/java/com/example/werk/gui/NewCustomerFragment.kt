@@ -65,5 +65,9 @@ class NewCustomerFragment : Fragment() {
 
         return true
     }
+    fun showUpdateCustomer(customer: Customer){
+
+    }
+
 
 }
