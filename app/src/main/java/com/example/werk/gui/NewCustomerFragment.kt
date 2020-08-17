@@ -10,11 +10,13 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.werk.R
 import com.example.werk.database.Customer
+import com.example.werk.viewmodels.CustomerViewModel
 import com.example.werk.viewmodels.NewCustomerViewModel
 import kotlinx.android.synthetic.main.fragment_new_customer.*
 
 
 class NewCustomerFragment : Fragment() {
+    private lateinit var newCustomerViewModel: NewCustomerViewModel
 
     val args: NewCustomerFragmentArgs by navArgs()
 
@@ -29,10 +31,15 @@ class NewCustomerFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val viewModel = ViewModelProvider(this).get(NewCustomerViewModel::class.java)
+        // newCustomerViewModel = ViewModelProvider(this).get(NewCustomerViewModel::class.java)
+        newCustomerViewModel = ViewModelProvider(requireActivity()).get(NewCustomerViewModel::class.java)
 
         val id = args.customerId
-        // if id > 0 => update customer
+        if (id > 0){
+            val customerToUpdate : Customer = newCustomerViewModel.getCustomerById(id)
+            et_name.text =customerToUpdate.customerName.toString()
+            et_description.text= customerToUpdate.customerDescription.toString()
+        } else
         //      zoek customer by id: viewModel.getCustomerById(id)
         //      als customer gevonden: data invullen in textviews enz
         // else => add customer
@@ -52,7 +59,7 @@ class NewCustomerFragment : Fragment() {
                 customer.customerInfo = et_info.text.toString()
 
                 // 2. NewCustomerViewModel.saveCustomer(...)
-                viewModel.saveCustomer(customer)
+                newCustomerViewModel.saveCustomer(customer)
 
                 // 3. Terug naar customer overview
                 view?.findNavController()

@@ -18,6 +18,10 @@ class NewCustomerViewModel(application: Application) : AndroidViewModel(applicat
         val customerDao = WerkDatabase.getDatabase(application, viewModelScope).customerDao()
         repository = CustomerRepository(customerDao)
     }
+    fun getCustomerById(id: Int): Customer{
+        val customer = customerDao.findByCustomerId(id)
+        return customer
+    }
 
     fun saveCustomer(customer: Customer) = viewModelScope.launch(Dispatchers.IO) {
         customerDao.save(customer)
